@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Demo Playground.playground">
+   </FileRef>
+   <FileRef
+      location = "group:IRIS iOS/IRIS iOS.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IRIS/IRIS.xcodeproj">
+   </FileRef>
+</Workspace>
