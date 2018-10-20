@@ -4,4 +4,4 @@ import UIKit
 import IRIS
 
 //let source = UIImage(named: "Sample.HEIC")!.enhance()!
-//let source = UIImage(named: "img_lights.jpg")!.enhance()!
+let source = UIImage(named: "Sample.HEIC")!.enhance()!

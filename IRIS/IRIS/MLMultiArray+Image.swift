@@ -28,11 +28,6 @@ public extension MLMultiArray {
      Converts the multi-array to a UIImage.
      */
     public func image<T: MultiArrayType>(offset: T, scale: T) -> UIImage? {
-        
-//        print(self[0],self[1],self[2])
-//        let ptr = self.dataPointer.bindMemory(to: Double.self, capacity: self.count)
-        
-        
         return MultiArray<T>(self).image(offset: offset, scale: scale)
     }
 }

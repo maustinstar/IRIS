@@ -19,11 +19,13 @@ public extension UIImage {
      */
     public func scaled() -> UIImage? {
         let newSize = CGSize(width: size.width * 2, height: size.height * 2)
-        UIGraphicsBeginImageContext(newSize)
+        UIGraphicsBeginImageContext(newSize) // 170.8 MB
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.interpolationQuality = CGInterpolationQuality.high
         ctx.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: newSize.height))
         ctx.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
 }

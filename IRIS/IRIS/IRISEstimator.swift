@@ -14,34 +14,57 @@ class IRISEstimator {
     
     private let model = SRCNN() // dummy model. Replace with IRISCNN()
     
+    private let shrinkSize = 0
+    
     struct PatchIn {
         static var size = 200
-        let buff: CVPixelBuffer
+        let buffer: CVPixelBuffer
         let position: CGPoint
     }
     
     struct PatchOut {
         static var size = 200
-        let buff: MLMultiArray
+        let buffer: MLMultiArray
         let position: CGPoint
     }
     
     private func decomposePatch(from image: CGImage, at postition: CGPoint) -> PatchIn {
         
-        let rect = CGRect(origin: CGPoint(x: Int(postition.x) * PatchOut.size, y: Int(postition.y) * PatchOut.size), size: CGSize(width: PatchIn.size, height: PatchIn.size))
+        let rect = CGRect(
+            origin: CGPoint(x: Int(postition.x) * PatchOut.size, y: Int(postition.y) * PatchOut.size),
+            size: CGSize(width: PatchIn.size, height: PatchIn.size))
         guard let cropped = image.cropping(to: rect) else {
             fatalError()
         }
-        guard let buff = UIImage(cgImage: cropped).pixelBuffer(width: PatchIn.size, height: PatchIn.size) else {
+        guard let buffer = UIImage(cgImage: cropped).pixelBuffer(width: PatchIn.size, height: PatchIn.size) else {
             fatalError()
         }
-        return PatchIn(buff: buff, position: postition)
+        return PatchIn(buffer: buffer, position: postition)
+    }
+    
+    private func expand(src: UIImage) -> UIImage? {
+        let w = Int(src.size.width)
+        let h = Int(src.size.height)
+        let exW = w + shrinkSize * 2
+        let exH = h + shrinkSize * 2
+        let targetSize = CGSize(width: exW, height: exH)
+        
+        UIGraphicsBeginImageContext(targetSize) // 170.8 MB
+        let ctx = UIGraphicsGetCurrentContext()!
+        ctx.setFillColor(UIColor.black.cgColor)
+        ctx.addRect(CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height))
+        ctx.drawPath(using: .fill)
+        ctx.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: targetSize.height))
+        ctx.draw(src.cgImage!, in: CGRect(x: shrinkSize, y: shrinkSize, width: w, height: h)) // 328.5 MB
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
     
     private func predict(_ patchIn: PatchIn) -> PatchOut {
         do {
-            let res = try model.prediction(image: patchIn.buff)
-            return PatchOut(buff: res.output1, position: patchIn.position)
+            let res = try model.prediction(image: patchIn.buffer) // 20+ MB!
+            return PatchOut(buffer: res.output1, position: patchIn.position)
         } catch {
             fatalError()
         }
@@ -49,6 +72,7 @@ class IRISEstimator {
     
     private func infer(src: UIImage, size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContext(size)
+        
         
         guard let cgimage = src.cgImage else {
             return nil
@@ -59,39 +83,38 @@ class IRISEstimator {
         
         for y in 0..<maxY {
             for x in 0..<maxX {
-                // Analyze individual patch
-//                let t = Date()
-                let patchIn = self.decomposePatch(from: cgimage, at: CGPoint(x: x, y: y))
-//                let t2 = Date()
-//                print("Decomposing patch", x , y, ":", t2.timeIntervalSince(t))
                 
                 // Estimate IRIS Patch
+                let patchIn = self.decomposePatch(from: cgimage, at: CGPoint(x: x, y: y))
                 let patchOut = self.predict(patchIn)
-//                let t3 = Date()
-//                print("Predicting patch ", x , y, ":", t3.timeIntervalSince(t2))
                 
-                // Render IRIS Patch
-                let position = patchOut.position
-                let image = patchOut.buff.image(offset: 0, scale: 255)!
+                // Render Patch
+                let rect = CGRect(
+                    x: patchOut.position.x * CGFloat(PatchOut.size),
+                    y: patchOut.position.y * CGFloat(PatchOut.size),
+                    width:  CGFloat(PatchOut.size),
+                    height: CGFloat(PatchOut.size))
                 
-//                let t4 = Date()
-//                print("Buffering patch ", x , y, ":", t4.timeIntervalSince(t3))
-                
-                let rect = CGRect(x: position.x * CGFloat(PatchOut.size), y: position.y * CGFloat(PatchOut.size), width: CGFloat(PatchOut.size), height: CGFloat(PatchOut.size))
-                image.draw(in: rect)
-//                let t5 = Date()
-//                print("Rendering patch  ", x , y, ":", t5.timeIntervalSince(t4))
-//                print("Total            ", x , y, ":", t5.timeIntervalSince(t))
+                // Add image to current context
+                patchOut.buffer.image(offset: 0, scale: 255)!.draw(in: rect)
             }
         }
-        return UIGraphicsGetImageFromCurrentImageContext()
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
     
     public func estimate(_ src: UIImage) -> UIImage? {
         let t = Date()
         print("beginning")
         let resized = src.scaled()!
-        let res =  infer(src: resized, size: resized.size)!
+        
+//        guard let expanded = expand(src: resized) else {
+//            return nil
+//        }
+        
+        let size = CGSize(width: resized.size.width - (resized.size.width.truncatingRemainder(dividingBy: CGFloat(PatchOut.size))), height: resized.size.height - (resized.size.height.truncatingRemainder(dividingBy: CGFloat(PatchOut.size))))
+        let res =  infer(src: resized, size: size)!
         
         let t2 = Date()
         print("done in: \(t2.timeIntervalSince(t))")

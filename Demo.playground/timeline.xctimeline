@@ -3,7 +3,12 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/michaelverges/Desktop/HackGT/2018/IRIS/Demo.playground#CharacterRangeLen=117&amp;CharacterRangeLoc=86&amp;EndingColumnNumber=0&amp;EndingLineNumber=7&amp;StartingColumnNumber=0&amp;StartingLineNumber=5&amp;Timestamp=561733354.31292"
+         documentLocation = "file:///Users/michaelverges/Desktop/HackGT/2018/IRIS/Demo.playground#CharacterRangeLen=112&amp;CharacterRangeLoc=86&amp;EndingColumnNumber=0&amp;EndingLineNumber=7&amp;StartingColumnNumber=0&amp;StartingLineNumber=5&amp;Timestamp=561749378.870007"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/michaelverges/Desktop/HackGT/2018/IRIS/Demo.playground#CharacterRangeLen=6&amp;CharacterRangeLoc=148&amp;EndingColumnNumber=11&amp;EndingLineNumber=6&amp;StartingColumnNumber=5&amp;StartingLineNumber=6&amp;Timestamp=561749378.8702"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
