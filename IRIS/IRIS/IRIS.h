@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Vision/Vision.h>
 
 //! Project version number for IRIS.
 FOUNDATION_EXPORT double IRISVersionNumber;
