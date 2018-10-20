@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "container:Demo.playground">
+   </FileRef>
+   <FileRef
       location = "group:IRIS iOS/IRIS iOS.xcodeproj">
    </FileRef>
    <FileRef

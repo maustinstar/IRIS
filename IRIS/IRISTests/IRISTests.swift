@@ -24,11 +24,14 @@ class IRISTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testPerformanceExample() {
+    func testIRISPerformance() {
         // This is an example of a performance test case.
+        let source = UIImage(named: "Sample.HEIC")!
+        var prediction = UIImage()
         self.measure {
-            // Put the code you want to measure the time of here.
+            prediction = source.enhance()!
         }
+        print(prediction)
     }
 
 }

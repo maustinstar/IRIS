@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import IRIS
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let source = UIImage(named: "Sample.HEIC")!.enhance()!
     }
 
 

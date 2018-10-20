@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F926E9FA217B1A1400F67F39 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; };
+		F926E9FB217B1A1400F67F39 /* IRIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F9B76B84217B64EB004366BB /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B83217B64EB004366BB /* PhotosUI.framework */; };
+		F9B76B86217B64EB004366BB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B85217B64EB004366BB /* Photos.framework */; };
+		F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */; };
+		F9B76B8C217B64EB004366BB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B76B8A217B64EB004366BB /* MainInterface.storyboard */; };
+		F9B76B90217B64EB004366BB /* IRIS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F9B76B81217B64EB004366BB /* IRIS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F9D09586217ACA02000D37C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09585217ACA02000D37C3 /* AppDelegate.swift */; };
 		F9D09588217ACA02000D37C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09587217ACA02000D37C3 /* ViewController.swift */; };
 		F9D0958B217ACA02000D37C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9D09589217ACA02000D37C3 /* Main.storyboard */; };
@@ -17,6 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F9B76B8E217B64EB004366BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9D0957A217ACA02000D37C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9B76B80217B64EB004366BB;
+			remoteInfo = "IRIS Extension";
+		};
 		F9D09597217ACA03000D37C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F9D0957A217ACA02000D37C3 /* Project object */;
@@ -33,7 +47,40 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F926E9F8217B183E00F67F39 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F926E9FB217B1A1400F67F39 /* IRIS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9B76B94217B64EB004366BB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F9B76B90217B64EB004366BB /* IRIS Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F926E9F9217B1A1400F67F39 /* IRIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IRIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F976054D217AE7F200D8EEB1 /* Sample.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sample.HEIC; sourceTree = "<group>"; };
+		F9B76B81217B64EB004366BB /* IRIS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IRIS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9B76B83217B64EB004366BB /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		F9B76B85217B64EB004366BB /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		F9B76B8B217B64EB004366BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		F9B76B8D217B64EB004366BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9D09582217ACA02000D37C3 /* IRIS iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRIS iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D09585217ACA02000D37C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9D09587217ACA02000D37C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,10 +97,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F9B76B7E217B64EB004366BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B76B84217B64EB004366BB /* PhotosUI.framework in Frameworks */,
+				F9B76B86217B64EB004366BB /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9D0957F217ACA02000D37C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F926E9FA217B1A1400F67F39 /* IRIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +131,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F9B76B82217B64EB004366BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9B76B83217B64EB004366BB /* PhotosUI.framework */,
+				F9B76B85217B64EB004366BB /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F9B76B87217B64EB004366BB /* IRIS Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */,
+				F9B76B8A217B64EB004366BB /* MainInterface.storyboard */,
+				F9B76B8D217B64EB004366BB /* Info.plist */,
+			);
+			path = "IRIS Extension";
+			sourceTree = "<group>";
+		};
 		F9D09579217ACA02000D37C3 = {
 			isa = PBXGroup;
 			children = (
+				F926E9F9217B1A1400F67F39 /* IRIS.framework */,
 				F9D09584217ACA02000D37C3 /* IRIS iOS */,
 				F9D09599217ACA03000D37C3 /* IRIS iOSTests */,
 				F9D095A4217ACA03000D37C3 /* IRIS iOSUITests */,
+				F9B76B87217B64EB004366BB /* IRIS Extension */,
+				F9B76B82217B64EB004366BB /* Frameworks */,
 				F9D09583217ACA02000D37C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +169,7 @@
 				F9D09582217ACA02000D37C3 /* IRIS iOS.app */,
 				F9D09596217ACA03000D37C3 /* IRIS iOSTests.xctest */,
 				F9D095A1217ACA03000D37C3 /* IRIS iOSUITests.xctest */,
+				F9B76B81217B64EB004366BB /* IRIS Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				F9D09585217ACA02000D37C3 /* AppDelegate.swift */,
+				F976054D217AE7F200D8EEB1 /* Sample.HEIC */,
 				F9D09587217ACA02000D37C3 /* ViewController.swift */,
 				F9D09589217ACA02000D37C3 /* Main.storyboard */,
 				F9D0958C217ACA03000D37C3 /* Assets.xcassets */,
@@ -128,6 +209,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F9B76B80217B64EB004366BB /* IRIS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9B76B93217B64EB004366BB /* Build configuration list for PBXNativeTarget "IRIS Extension" */;
+			buildPhases = (
+				F9B76B7D217B64EB004366BB /* Sources */,
+				F9B76B7E217B64EB004366BB /* Frameworks */,
+				F9B76B7F217B64EB004366BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IRIS Extension";
+			productName = "IRIS Extension";
+			productReference = F9B76B81217B64EB004366BB /* IRIS Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F9D09581217ACA02000D37C3 /* IRIS iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9D095AA217ACA03000D37C3 /* Build configuration list for PBXNativeTarget "IRIS iOS" */;
@@ -135,10 +233,13 @@
 				F9D0957E217ACA02000D37C3 /* Sources */,
 				F9D0957F217ACA02000D37C3 /* Frameworks */,
 				F9D09580217ACA02000D37C3 /* Resources */,
+				F926E9F8217B183E00F67F39 /* Embed Frameworks */,
+				F9B76B94217B64EB004366BB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F9B76B8F217B64EB004366BB /* PBXTargetDependency */,
 			);
 			name = "IRIS iOS";
 			productName = "IRIS iOS";
@@ -187,10 +288,13 @@
 		F9D0957A217ACA02000D37C3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Michael Verges";
 				TargetAttributes = {
+					F9B76B80217B64EB004366BB = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					F9D09581217ACA02000D37C3 = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -220,11 +324,20 @@
 				F9D09581217ACA02000D37C3 /* IRIS iOS */,
 				F9D09595217ACA03000D37C3 /* IRIS iOSTests */,
 				F9D095A0217ACA03000D37C3 /* IRIS iOSUITests */,
+				F9B76B80217B64EB004366BB /* IRIS Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F9B76B7F217B64EB004366BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B76B8C217B64EB004366BB /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9D09580217ACA02000D37C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +365,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F9B76B7D217B64EB004366BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9D0957E217ACA02000D37C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +401,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F9B76B8F217B64EB004366BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9B76B80217B64EB004366BB /* IRIS Extension */;
+			targetProxy = F9B76B8E217B64EB004366BB /* PBXContainerItemProxy */;
+		};
 		F9D09598217ACA03000D37C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F9D09581217ACA02000D37C3 /* IRIS iOS */;
@@ -293,6 +419,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F9B76B8A217B64EB004366BB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9B76B8B217B64EB004366BB /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		F9D09589217ACA02000D37C3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -312,6 +446,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F9B76B91217B64EB004366BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NB4XDB925U;
+				INFOPLIST_FILE = "IRIS Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelverges.IRIS-iOS.IRIS-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F9B76B92217B64EB004366BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NB4XDB925U;
+				INFOPLIST_FILE = "IRIS Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelverges.IRIS-iOS.IRIS-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F9D095A8217ACA03000D37C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -431,6 +605,7 @@
 		F9D095AB217ACA03000D37C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NB4XDB925U;
@@ -449,6 +624,7 @@
 		F9D095AC217ACA03000D37C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NB4XDB925U;
@@ -549,6 +725,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F9B76B93217B64EB004366BB /* Build configuration list for PBXNativeTarget "IRIS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9B76B91217B64EB004366BB /* Debug */,
+				F9B76B92217B64EB004366BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F9D0957D217ACA02000D37C3 /* Build configuration list for PBXProject "IRIS iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
