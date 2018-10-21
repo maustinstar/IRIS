@@ -76,6 +76,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.indicator.stopAnimating()
+        self.button.setTitle("Select Photo", for: .normal)
+        
+        switch sourceImage {
+        case nil:
+            button.setTitle("Select Photo", for: .normal)
+        default:
+            button.setTitle("Enhance", for: .normal)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.stopAnimating()
@@ -93,12 +105,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func enhanceSource() {
         // update UI
-        button.setTitle("", for: .normal)
-        indicator.isHidden = false
-        indicator.startAnimating()
+        button.setTitle("Select Photo", for: .normal)
+//        indicator.startAnimating()
         
-        // export poto
-        OperationQueue.main.addOperation {
+        DispatchQueue.global().async {
+            // export poto
             // enhance
             let new = self.sourceImage!.enhance()!
             
@@ -107,12 +118,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 PHAssetChangeRequest.creationRequestForAsset(from: new)
             }, completionHandler: nil)
             self.sourceImage = nil
+            UIApplication.shared.open(URL(string:"photos-redirect://")!)
         }
-        OperationQueue.main.waitUntilAllOperationsAreFinished()
-        // update UI
-        button.setTitle("Select Photo", for: .normal)
-        indicator.stopAnimating()
-        UIApplication.shared.open(URL(string:"photos-redirect://")!)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
