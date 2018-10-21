@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,6 +23,9 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QdK-fZ-JjD">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="552"/>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vYE-kA-z3j">
+                                        <rect key="frame" x="141.5" y="235.5" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="QdK-fZ-JjD" firstAttribute="leading" secondItem="XsA-XO-ZGz" secondAttribute="leading" id="9JH-7a-KZa"/>
@@ -33,52 +35,13 @@
                                     <constraint firstItem="QdK-fZ-JjD" firstAttribute="height" secondItem="XsA-XO-ZGz" secondAttribute="height" id="lzD-Jd-twV"/>
                                 </constraints>
                             </scrollView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-o2-NJQ">
-                                <rect key="frame" x="80" y="52" width="160" height="20"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Uh9-TC-c6Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXh-mg-DHl">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Lcz-Ym-gJ5">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He3-MP-kZQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="15"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="He3-MP-kZQ" secondAttribute="bottom" id="2mc-Cy-q0Q"/>
-                                                    <constraint firstItem="He3-MP-kZQ" firstAttribute="leading" secondItem="Lcz-Ym-gJ5" secondAttribute="leading" id="XIG-Tx-vcT"/>
-                                                    <constraint firstItem="He3-MP-kZQ" firstAttribute="top" secondItem="Lcz-Ym-gJ5" secondAttribute="top" id="qN7-jF-hHe"/>
-                                                    <constraint firstAttribute="trailing" secondItem="He3-MP-kZQ" secondAttribute="trailing" id="uid-50-dwQ"/>
-                                                </constraints>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="light"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="1Kg-z3-M1A"/>
-                                    <constraint firstAttribute="height" constant="20" id="vrl-98-9Sv"/>
-                                </constraints>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="xhV-o2-NJQ" firstAttribute="top" secondItem="fkF-hH-LvW" secondAttribute="top" constant="32" id="2l2-4g-RYn"/>
                             <constraint firstItem="fkF-hH-LvW" firstAttribute="bottom" secondItem="XsA-XO-ZGz" secondAttribute="bottom" constant="-44" id="3Fd-1O-5ei"/>
-                            <constraint firstItem="xhV-o2-NJQ" firstAttribute="centerX" secondItem="fkF-hH-LvW" secondAttribute="centerX" id="5Zc-ds-JX0"/>
+                            <constraint firstItem="vYE-kA-z3j" firstAttribute="centerY" secondItem="fkF-hH-LvW" secondAttribute="centerY" id="HQj-FR-QeK"/>
                             <constraint firstItem="XsA-XO-ZGz" firstAttribute="top" secondItem="fkF-hH-LvW" secondAttribute="top" id="PUq-UN-D0B"/>
                             <constraint firstItem="XsA-XO-ZGz" firstAttribute="leading" secondItem="fkF-hH-LvW" secondAttribute="leading" id="cm1-eM-Tgt"/>
+                            <constraint firstItem="vYE-kA-z3j" firstAttribute="centerX" secondItem="fkF-hH-LvW" secondAttribute="centerX" id="f8S-1V-fE7"/>
                             <constraint firstItem="fkF-hH-LvW" firstAttribute="trailing" secondItem="XsA-XO-ZGz" secondAttribute="trailing" id="gHX-eD-vlx"/>
                             <constraint firstItem="QdK-fZ-JjD" firstAttribute="width" secondItem="zMn-AG-sqS" secondAttribute="width" id="yoo-Tr-jsA"/>
                         </constraints>
@@ -87,6 +50,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
+                        <outlet property="indicator" destination="vYE-kA-z3j" id="azm-mE-dZK"/>
                         <outlet property="preview" destination="QdK-fZ-JjD" id="c9S-Sd-j6S"/>
                     </connections>
                 </viewController>

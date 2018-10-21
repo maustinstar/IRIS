@@ -1,7 +1,9 @@
 //: A UIKit based Playground for presenting user interface
 
 import UIKit
-import IRIS
+//import IRIS
 
 //let source = UIImage(named: "Sample.HEIC")!.enhance()!
-let source = UIImage(named: "Sample.HEIC")!.enhance()!
+//let source = UIImage(named: "Sample.HEIC")!.enhance()!
+
+print((200) - (1200) / (7))

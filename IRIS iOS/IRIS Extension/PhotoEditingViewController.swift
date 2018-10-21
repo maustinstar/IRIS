@@ -18,6 +18,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
     var enhanceQueue = OperationQueue()
     @IBOutlet weak var preview: UIImageView!
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,19 +37,24 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
         
-        
+        indicator.startAnimating()
+        indicator.hidesWhenStopped = true
         
         print("startContentEditing")
         input = contentEditingInput
-        
-        if let path = self.input!.fullSizeImageURL?.path {
-            let image = UIImage(contentsOfFile: path)!
-            preview.image = image.enhance()!
-            preview.contentMode = .scaleAspectFit
+        enhanceQueue.addOperation {
+            if let path = self.input!.fullSizeImageURL?.path {
+                let image = UIImage(contentsOfFile: path)!
+                self.preview.image = image.enhance()!
+                self.preview.contentMode = .scaleAspectFit
+            }
+            self.indicator.stopAnimating()
         }
     }
     
     func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {
+        // Block thread until image is enhanced
+            enhanceQueue.waitUntilAllOperationsAreFinished()
         // Update UI to reflect that editing has finished and output is being rendered.
         // Render and provide output on a background queue.
         DispatchQueue.global().async {

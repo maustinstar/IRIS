@@ -10,9 +10,13 @@ import Foundation
 
 class IRISEstimator {
     
+    private let minimumPatchInset: CGFloat = 12.0
+    private var horizontalPatchInset: CGFloat = 12.0
+    private var verticalPatchInset: CGFloat = 12.0
+    
     private let predictionQueue = OperationQueue()
     
-    private let model = SRCNN() // dummy model. Replace with IRISCNN()
+    private let model = IRISCNN() // dummy model. Replace with IRISCNN()
     
     private let shrinkSize = 0
     
@@ -31,8 +35,11 @@ class IRISEstimator {
     private func decomposePatch(from image: CGImage, at postition: CGPoint) -> PatchIn {
         
         let rect = CGRect(
-            origin: CGPoint(x: Int(postition.x) * PatchOut.size, y: Int(postition.y) * PatchOut.size),
+            origin: CGPoint(
+                x: postition.x * CGFloat(PatchOut.size) - (postition.x * horizontalPatchInset),
+                y: postition.y * CGFloat(PatchOut.size) - (postition.y * verticalPatchInset)),
             size: CGSize(width: PatchIn.size, height: PatchIn.size))
+        
         guard let cropped = image.cropping(to: rect) else {
             fatalError()
         }
@@ -40,25 +47,6 @@ class IRISEstimator {
             fatalError()
         }
         return PatchIn(buffer: buffer, position: postition)
-    }
-    
-    private func expand(src: UIImage) -> UIImage? {
-        let w = Int(src.size.width)
-        let h = Int(src.size.height)
-        let exW = w + shrinkSize * 2
-        let exH = h + shrinkSize * 2
-        let targetSize = CGSize(width: exW, height: exH)
-        
-        UIGraphicsBeginImageContext(targetSize) // 170.8 MB
-        let ctx = UIGraphicsGetCurrentContext()!
-        ctx.setFillColor(UIColor.black.cgColor)
-        ctx.addRect(CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height))
-        ctx.drawPath(using: .fill)
-        ctx.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: targetSize.height))
-        ctx.draw(src.cgImage!, in: CGRect(x: shrinkSize, y: shrinkSize, width: w, height: h)) // 328.5 MB
-        let result = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return result
     }
     
     private func predict(_ patchIn: PatchIn) -> PatchOut {
@@ -78,8 +66,8 @@ class IRISEstimator {
             return nil
         }
         
-        let maxY = Int(src.size.height) / PatchOut.size
-        let maxX = Int(src.size.width) / PatchOut.size
+        let maxY: Int = Int(src.size.height) / (PatchOut.size - Int(verticalPatchInset))
+        let maxX: Int = Int(src.size.width) / (PatchOut.size - Int(horizontalPatchInset))
         
         for y in 0..<maxY {
             for x in 0..<maxX {
@@ -88,15 +76,28 @@ class IRISEstimator {
                 let patchIn = self.decomposePatch(from: cgimage, at: CGPoint(x: x, y: y))
                 let patchOut = self.predict(patchIn)
                 
-                // Render Patch
-                let rect = CGRect(
-                    x: patchOut.position.x * CGFloat(PatchOut.size),
-                    y: patchOut.position.y * CGFloat(PatchOut.size),
-                    width:  CGFloat(PatchOut.size),
-                    height: CGFloat(PatchOut.size))
                 
+                // Rect within full image to render the patch
+                let rect = CGRect(
+                    x: Int(patchOut.position.x * CGFloat(PatchOut.size)) - x * Int(horizontalPatchInset),
+                    y: Int(patchOut.position.y * CGFloat(PatchOut.size)) - y * Int(verticalPatchInset),
+                    width:  PatchOut.size - Int(horizontalPatchInset),
+                    height: PatchOut.size - Int(verticalPatchInset))
+                
+                // segment of patch to render (remove borders)
+                let inset = CGRect(
+                    x: horizontalPatchInset * 0.5,
+                    y: verticalPatchInset * 0.5,
+                    width:  CGFloat(PatchOut.size) - horizontalPatchInset,
+                    height: CGFloat(PatchOut.size) - verticalPatchInset)
+                
+                let image = patchOut.buffer.image(offset: 0, scale: 255)?.cgImage
+                
+                guard let cropped = image!.cropping(to: inset) else {
+                    fatalError()
+                }
                 // Add image to current context
-                patchOut.buffer.image(offset: 0, scale: 255)!.draw(in: rect)
+                UIImage(cgImage: cropped).draw(in: rect)
             }
         }
         let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -109,12 +110,16 @@ class IRISEstimator {
         print("beginning")
         let resized = src.scaled()!
         
-//        guard let expanded = expand(src: resized) else {
-//            return nil
-//        }
+        let x = Int(ceil(CGFloat((resized.cgImage?.width)!) / (CGFloat(PatchOut.size) - minimumPatchInset)))
+        horizontalPatchInset = CGFloat(200 - resized.cgImage!.width / x)
         
-        let size = CGSize(width: resized.size.width - (resized.size.width.truncatingRemainder(dividingBy: CGFloat(PatchOut.size))), height: resized.size.height - (resized.size.height.truncatingRemainder(dividingBy: CGFloat(PatchOut.size))))
-        let res =  infer(src: resized, size: size)!
+        let y = Int(ceil(CGFloat((resized.cgImage?.height)!) / (CGFloat(PatchOut.size) - minimumPatchInset)))
+        verticalPatchInset = CGFloat(200 - resized.cgImage!.height / y)
+        
+        let size = CGSize(
+            width: x * Int(200 - horizontalPatchInset) - Int(horizontalPatchInset),
+            height: y * Int(200 - verticalPatchInset) - Int(verticalPatchInset))
+        let res = infer(src: resized, size: size)!
         
         let t2 = Date()
         print("done in: \(t2.timeIntervalSince(t))")
