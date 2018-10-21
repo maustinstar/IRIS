@@ -121,8 +121,8 @@ class IRISEstimator {
                 rect = CGRect(
                     x: xPos,
                     y: yPos,
-                    width:  (x != maxX - 1) ? width : width - Int(horizontalPatchInset),
-                    height: (y != maxY - 1) ? height : height - Int(verticalPatchInset))
+                    width:  (x != maxX - 1) ? width : Int(size.width) - xPos,
+                    height: (y != maxY - 1) ? height : Int(size.height) - yPos)
                 
                 // segment of patch to render (remove insets)
                 inset = CGRect(
