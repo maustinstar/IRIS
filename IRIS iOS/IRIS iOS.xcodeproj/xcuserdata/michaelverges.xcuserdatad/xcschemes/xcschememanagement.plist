@@ -17,11 +17,16 @@
 		<key>IRIS iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>F9B76B80217B64EB004366BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F9D09581217ACA02000D37C3</key>
 		<dict>
 			<key>primary</key>

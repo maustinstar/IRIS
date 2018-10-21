@@ -16,7 +16,7 @@ class IRISEstimator {
     
     private let predictionQueue = OperationQueue()
     
-    private let model = IRISCNN() // dummy model. Replace with IRISCNN()
+    private let model = IRISCNN2() // dummy model. Replace with IRISCNN()
     
     private let shrinkSize = 0
     
@@ -46,7 +46,7 @@ class IRISEstimator {
         guard let buffer = UIImage(cgImage: cropped).pixelBuffer(width: PatchIn.size, height: PatchIn.size) else {
             fatalError()
         }
-        return PatchIn(buffer: buffer, position: postition)
+        return PatchIn(buffer: buffer, position: rect.origin)
     }
     
     private func predict(_ patchIn: PatchIn) -> PatchOut {
@@ -79,8 +79,8 @@ class IRISEstimator {
                 
                 // Rect within full image to render the patch
                 let rect = CGRect(
-                    x: Int(patchOut.position.x * CGFloat(PatchOut.size)) - x * Int(horizontalPatchInset),
-                    y: Int(patchOut.position.y * CGFloat(PatchOut.size)) - y * Int(verticalPatchInset),
+                    x: Int(patchOut.position.x) - Int(horizontalPatchInset / 2),
+                    y: Int(patchOut.position.y) - Int(verticalPatchInset / 2),
                     width:  PatchOut.size - Int(horizontalPatchInset),
                     height: PatchOut.size - Int(verticalPatchInset))
                 

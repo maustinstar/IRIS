@@ -14,6 +14,7 @@
 		F9760544217AE03300D8EEB1 /* MultiArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976053D217AE03200D8EEB1 /* MultiArray.swift */; };
 		F9760548217AE04100D8EEB1 /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9760547217AE04100D8EEB1 /* MLMultiArray+Image.swift */; };
 		F97988BF217ACF3E0027189E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97988BE217ACF3E0027189E /* UIImage.swift */; };
+		F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9939603217C882F00696E98 /* IRISCNN2.mlmodel */; };
 		F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */; };
 		F9D09601217ACA41000D37C3 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D095F7217ACA41000D37C3 /* IRIS.framework */; };
 		F9D09606217ACA41000D37C3 /* IRISTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09605217ACA41000D37C3 /* IRISTests.swift */; };
@@ -38,6 +39,7 @@
 		F976053D217AE03200D8EEB1 /* MultiArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiArray.swift; sourceTree = "<group>"; };
 		F9760547217AE04100D8EEB1 /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
 		F97988BE217ACF3E0027189E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		F9939603217C882F00696E98 /* IRISCNN2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN2.mlmodel; sourceTree = "<group>"; };
 		F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN.mlmodel; sourceTree = "<group>"; };
 		F9D095F7217ACA41000D37C3 /* IRIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IRIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D095FA217ACA41000D37C3 /* IRIS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRIS.h; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				F976053D217AE03200D8EEB1 /* MultiArray.swift */,
 				F9760547217AE04100D8EEB1 /* MLMultiArray+Image.swift */,
 				F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */,
+				F9939603217C882F00696E98 /* IRISCNN2.mlmodel */,
 				F97988BE217ACF3E0027189E /* UIImage.swift */,
 				F9357ACE217ADB7600C210CC /* IRISEstimator.swift */,
 				F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */,
@@ -222,6 +225,7 @@
 				F9357AD3217ADC9A00C210CC /* SRCNN.mlmodel in Sources */,
 				F9357ACF217ADB7600C210CC /* IRISEstimator.swift in Sources */,
 				F9760543217AE03300D8EEB1 /* UIImage+CVPixelBuffer.swift in Sources */,
+				F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */,
 				F9760544217AE03300D8EEB1 /* MultiArray.swift in Sources */,
 				F97988BF217ACF3E0027189E /* UIImage.swift in Sources */,
 				F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */,
