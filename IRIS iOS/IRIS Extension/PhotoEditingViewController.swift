@@ -36,20 +36,18 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         // Present content for editing, and keep the contentEditingInput for use when closing the edit session.
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
-        
-        indicator.startAnimating()
         indicator.hidesWhenStopped = true
         
         print("startContentEditing")
         input = contentEditingInput
         enhanceQueue.addOperation {
             if let path = self.input!.fullSizeImageURL?.path {
-                let image = UIImage(contentsOfFile: path)!
-                self.preview.image = image.enhance()!
-                self.preview.contentMode = .scaleAspectFit
+                self.enhancedImage = UIImage(contentsOfFile: path)!.enhance()!
             }
-            self.indicator.stopAnimating()
         }
+        enhanceQueue.waitUntilAllOperationsAreFinished()
+        self.preview.image = enhancedImage
+        self.preview.contentMode = .scaleAspectFit
     }
     
     func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {
