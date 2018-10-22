@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import VideoToolbox
 
 class IRISEstimator {
     /**
@@ -30,51 +31,63 @@ class IRISEstimator {
     
     private let model = IRISCNN2()
     
-    struct PatchIn {
+    struct Patch {
         static var size = 200
         let buffer: CVPixelBuffer
         let position: CGPoint
+        
+        init(buffer: CVPixelBuffer, position: CGPoint) {
+            self.buffer = buffer
+            self.position = position
+        }
+        
+        init(buffer: MLMultiArray, position: CGPoint) {
+            self.buffer = (buffer.image(offset: 0, scale: 255)!.pixelBuffer(
+                    width: IRISEstimator.Patch.size,
+                    height: IRISEstimator.Patch.size))!
+            self.position = position
+        }
+        
+        lazy var cgImage: CGImage? = {
+            var image: CGImage?
+            VTCreateCGImageFromCVPixelBuffer(self.buffer, options: nil, imageOut: &image)
+            return image
+        }()
     }
     
-    struct PatchOut {
-        static var size = 200
-        let buffer: MLMultiArray
-        let position: CGPoint
-    }
-    
-    private func decomposePatch(from image: CGImage, at postition: CGPoint) -> PatchIn {
+    private func decomposePatch(from image: CGImage, at postition: CGPoint) -> Patch {
         
         var rect = CGRect(
             origin: CGPoint(
-                x: postition.x * (CGFloat(PatchOut.size) - horizontalPatchInset),
-                y: postition.y * (CGFloat(PatchOut.size) - verticalPatchInset)),
+                x: postition.x * (CGFloat(Patch.size) - horizontalPatchInset),
+                y: postition.y * (CGFloat(Patch.size) - verticalPatchInset)),
             size: CGSize(
-                width: PatchIn.size,
-                height: PatchIn.size))
+                width: Patch.size,
+                height: Patch.size))
         
         // Account for rounding insets that do not add to image size
-        if  rect.origin.x > CGFloat(image.width - PatchOut.size) + (horizontalPatchInset / 2) {
-            print(CGFloat(image.width - PatchOut.size) + (horizontalPatchInset / 2), rect.origin.x)
-            rect.origin.x = CGFloat(image.width - PatchOut.size) + (horizontalPatchInset / 2)
+        if  rect.origin.x > CGFloat(image.width - Patch.size) + (horizontalPatchInset / 2) {
+            print(CGFloat(image.width - Patch.size) + (horizontalPatchInset / 2), rect.origin.x)
+            rect.origin.x = CGFloat(image.width - Patch.size) + (horizontalPatchInset / 2)
         }
         
-        if  rect.origin.y > CGFloat(image.height - PatchOut.size) + (verticalPatchInset / 2) {
-            rect.origin.y = CGFloat(image.height - PatchOut.size) + (verticalPatchInset / 2)
+        if  rect.origin.y > CGFloat(image.height - Patch.size) + (verticalPatchInset / 2) {
+            rect.origin.y = CGFloat(image.height - Patch.size) + (verticalPatchInset / 2)
         }
         
         guard let cropped = image.cropping(to: rect) else {
             fatalError()
         }
-        guard let buffer = UIImage(cgImage: cropped).pixelBuffer(width: PatchIn.size, height: PatchIn.size) else {
+        guard let buffer = UIImage(cgImage: cropped).pixelBuffer(width: Patch.size, height: Patch.size) else {
             fatalError()
         }
-        return PatchIn(buffer: buffer, position: rect.origin)
+        return Patch(buffer: buffer, position: rect.origin)
     }
     
-    private func predict(_ patchIn: PatchIn) -> PatchOut {
+    private func predict(_ patchIn: Patch) -> Patch {
         do {
             let res = try model.prediction(image: patchIn.buffer)
-            return PatchOut(buffer: res.output1, position: patchIn.position)
+            return Patch(buffer: res.output1, position: patchIn.position)
         } catch {
             fatalError()
         }
@@ -88,8 +101,8 @@ class IRISEstimator {
             return nil
         }
         
-        let maxY: Int = Int(src.size.height) / (PatchOut.size - Int(verticalPatchInset))
-        let maxX: Int = Int(src.size.width) / (PatchOut.size - Int(horizontalPatchInset))
+        let maxY: Int = Int(src.size.height) / (Patch.size - Int(verticalPatchInset))
+        let maxX: Int = Int(src.size.width) / (Patch.size - Int(horizontalPatchInset))
         
         totalPatches = maxX * maxY
         
@@ -100,7 +113,7 @@ class IRISEstimator {
                 
                 // Estimate IRIS Patch
                 let patchIn = self.decomposePatch(from: cgimage, at: CGPoint(x: x, y: y))
-                let patchOut = self.predict(patchIn)
+                var patchOut = self.predict(patchIn)
                 
                 var rect = CGRect()
                 var inset = CGRect()
@@ -108,8 +121,8 @@ class IRISEstimator {
                 var (xPos, yPos) = (0, 0)
                 var (rXPos, rYPos) = (Int(horizontalPatchInset / 2),
                                       Int(verticalPatchInset / 2))
-                var (width, height) = (PatchOut.size - Int(horizontalPatchInset),
-                                       PatchOut.size - Int(verticalPatchInset))
+                var (width, height) = (Patch.size - Int(horizontalPatchInset),
+                                       Patch.size - Int(verticalPatchInset))
                 
                 if x == 0 {
                     width += Int(horizontalPatchInset / 2)
@@ -145,7 +158,7 @@ class IRISEstimator {
                     width:  width,
                     height: height)
                 
-                let image = patchOut.buffer.image(offset: 0, scale: 255)?.cgImage
+                let image = patchOut.cgImage
                 
                 guard let cropped = image!.cropping(to: inset) else {
                     fatalError()
@@ -165,10 +178,10 @@ class IRISEstimator {
         let t = Date()
         let resized = src.scaled()!
         
-        let x = Int(ceil(CGFloat((resized.cgImage?.width)!) / (CGFloat(PatchOut.size) - minimumPatchInset)))
+        let x = Int(ceil(CGFloat((resized.cgImage?.width)!) / (CGFloat(Patch.size) - minimumPatchInset)))
         horizontalPatchInset = CGFloat(200 - resized.cgImage!.width / x)
         
-        let y = Int(ceil(CGFloat((resized.cgImage?.height)!) / (CGFloat(PatchOut.size) - minimumPatchInset)))
+        let y = Int(ceil(CGFloat((resized.cgImage?.height)!) / (CGFloat(Patch.size) - minimumPatchInset)))
         verticalPatchInset = CGFloat(200 - resized.cgImage!.height / y)
         
         let size = resized.size
