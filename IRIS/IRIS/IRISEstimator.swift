@@ -14,19 +14,21 @@ class IRISEstimator {
      - note: Higher insets can increase data consistency in the final render but increases computation load
      - note: Better trained models can work with lower insets.
      */
-    public let minimumPatchInset: CGFloat      = 0
+    public let minimumPatchInset: CGFloat       = 4
     private var horizontalPatchInset: CGFloat   = 0
     private var verticalPatchInset: CGFloat     = 0
+    
+    public var progress: Double {
+        get { return Double(patchesRendered) / Double(totalPatches) }
+    }
+    private var totalPatches = 1
+    private var patchesRendered = 0
 //    /**
 //     Determines if edge patches should crop the inset.
 //     */
 //    public var shouldCropBorders = false
     
-    private let predictionQueue = OperationQueue()
-    
     private let model = IRISCNN2()
-    
-    private let shrinkSize = 0
     
     struct PatchIn {
         static var size = 200
@@ -78,6 +80,8 @@ class IRISEstimator {
         
         let maxY: Int = Int(src.size.height) / (PatchOut.size - Int(verticalPatchInset))
         let maxX: Int = Int(src.size.width) / (PatchOut.size - Int(horizontalPatchInset))
+        
+        totalPatches = maxX * maxY
         
         for y in 0..<maxY {
             for x in 0..<maxX {
@@ -138,6 +142,8 @@ class IRISEstimator {
                 }
                 // Add image to current context
                 UIImage(cgImage: cropped).draw(in: rect)
+                patchesRendered += 1
+                print(progress)
             }
         }
         let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -147,7 +153,6 @@ class IRISEstimator {
     
     public func estimate(_ src: UIImage) -> UIImage? {
         let t = Date()
-        print("beginning")
         let resized = src.scaled()!
         
         let x = Int(ceil(CGFloat((resized.cgImage?.width)!) / (CGFloat(PatchOut.size) - minimumPatchInset)))
