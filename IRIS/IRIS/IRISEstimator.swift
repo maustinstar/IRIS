@@ -14,7 +14,7 @@ class IRISEstimator {
      - note: Higher insets can increase data consistency in the final render but increases computation load
      - note: Better trained models can work with lower insets.
      */
-    public let minimumPatchInset: CGFloat       = 4
+    public  let minimumPatchInset: CGFloat      = 8 // increase this
     private var horizontalPatchInset: CGFloat   = 0
     private var verticalPatchInset: CGFloat     = 0
     
@@ -44,13 +44,23 @@ class IRISEstimator {
     
     private func decomposePatch(from image: CGImage, at postition: CGPoint) -> PatchIn {
         
-        let rect = CGRect(
+        var rect = CGRect(
             origin: CGPoint(
                 x: postition.x * (CGFloat(PatchOut.size) - horizontalPatchInset),
                 y: postition.y * (CGFloat(PatchOut.size) - verticalPatchInset)),
             size: CGSize(
                 width: PatchIn.size,
                 height: PatchIn.size))
+        
+        // Account for rounding insets that do not add to image size
+        if  rect.origin.x > CGFloat(image.width - PatchOut.size) + (horizontalPatchInset / 2) {
+            print(CGFloat(image.width - PatchOut.size) + (horizontalPatchInset / 2), rect.origin.x)
+            rect.origin.x = CGFloat(image.width - PatchOut.size) + (horizontalPatchInset / 2)
+        }
+        
+        if  rect.origin.y > CGFloat(image.height - PatchOut.size) + (verticalPatchInset / 2) {
+            rect.origin.y = CGFloat(image.height - PatchOut.size) + (verticalPatchInset / 2)
+        }
         
         guard let cropped = image.cropping(to: rect) else {
             fatalError()
