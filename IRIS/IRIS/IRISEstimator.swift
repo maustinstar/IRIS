@@ -130,7 +130,6 @@ class IRISEstimator {
                     y: rYPos,
                     width:  width,
                     height: height)
-                print(inset)
                 
                 let image = patchOut.buffer.image(offset: 0, scale: 255)?.cgImage
                 
