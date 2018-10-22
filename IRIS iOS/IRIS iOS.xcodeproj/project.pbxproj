@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F926E9FA217B1A1400F67F39 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; };
-		F926E9FB217B1A1400F67F39 /* IRIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F95F0622217D4EE400A7AE5F /* ExtensionAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F95F0621217D4EE400A7AE5F /* ExtensionAssets.xcassets */; };
+		F95F0627217E333000A7AE5F /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; };
+		F95F0628217E333700A7AE5F /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; };
+		F95F0629217E333700A7AE5F /* IRIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9B76B84217B64EB004366BB /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B83217B64EB004366BB /* PhotosUI.framework */; };
 		F9B76B86217B64EB004366BB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B85217B64EB004366BB /* Photos.framework */; };
 		F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */; };
@@ -49,13 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F926E9F8217B183E00F67F39 /* Embed Frameworks */ = {
+		F95F062A217E333700A7AE5F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F926E9FB217B1A1400F67F39 /* IRIS.framework in Embed Frameworks */,
+				F95F0629217E333700A7AE5F /* IRIS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F926E9FA217B1A1400F67F39 /* IRIS.framework in Frameworks */,
+				F95F0627217E333000A7AE5F /* IRIS.framework in Frameworks */,
+				F95F0628217E333700A7AE5F /* IRIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +238,8 @@
 				F9D0957E217ACA02000D37C3 /* Sources */,
 				F9D0957F217ACA02000D37C3 /* Frameworks */,
 				F9D09580217ACA02000D37C3 /* Resources */,
-				F926E9F8217B183E00F67F39 /* Embed Frameworks */,
 				F9B76B94217B64EB004366BB /* Embed App Extensions */,
+				F95F062A217E333700A7AE5F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
