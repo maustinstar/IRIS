@@ -67,15 +67,7 @@ class ImageTransfer {
             rect.origin.y = CGFloat(image.height - Input.height)
         }
         
-        guard let cropped = image.cropping(to: rect) else {
-            fatalError()
-        }
-        guard let buffer = UIImage(cgImage: cropped).pixelBuffer(width: Input.width, height: Input.height) else {
-            fatalError()
-        }
-        return Patch(buffer: buffer,
-                     position: (Int(rect.origin.x), Int(rect.origin.y)),
-                     size: (Input.width, Input.height))
+        return image.patch(in: rect)!
     }
     
     private func predict(_ patchIn: Patch) -> Patch {
