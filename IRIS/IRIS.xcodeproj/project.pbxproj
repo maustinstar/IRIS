@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9357ACF217ADB7600C210CC /* IRISEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9357ACE217ADB7600C210CC /* IRISEstimator.swift */; };
+		F9357ACF217ADB7600C210CC /* ImageTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9357ACE217ADB7600C210CC /* ImageTransfer.swift */; };
 		F9357AD3217ADC9A00C210CC /* SRCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */; };
 		F9760540217AE03300D8EEB1 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9760539217AE03200D8EEB1 /* Math.swift */; };
 		F9760543217AE03300D8EEB1 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */; };
@@ -19,6 +19,7 @@
 		F9D09601217ACA41000D37C3 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D095F7217ACA41000D37C3 /* IRIS.framework */; };
 		F9D09606217ACA41000D37C3 /* IRISTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09605217ACA41000D37C3 /* IRISTests.swift */; };
 		F9D09608217ACA41000D37C3 /* IRIS.h in Headers */ = {isa = PBXBuildFile; fileRef = F9D095FA217ACA41000D37C3 /* IRIS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9DAB0DE217F77DF00466AE9 /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB0DD217F77DF00466AE9 /* Patch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F9357ACE217ADB7600C210CC /* IRISEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRISEstimator.swift; sourceTree = "<group>"; };
+		F9357ACE217ADB7600C210CC /* ImageTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransfer.swift; sourceTree = "<group>"; };
 		F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SRCNN.mlmodel; path = ../../../../../../Downloads/SRCNN.mlmodel; sourceTree = "<group>"; };
 		F9760539217AE03200D8EEB1 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		F9D09600217ACA41000D37C3 /* IRISTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IRISTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D09605217ACA41000D37C3 /* IRISTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRISTests.swift; sourceTree = "<group>"; };
 		F9D09607217ACA41000D37C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9DAB0DD217F77DF00466AE9 /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,8 @@
 				F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */,
 				F9939603217C882F00696E98 /* IRISCNN2.mlmodel */,
 				F97988BE217ACF3E0027189E /* UIImage.swift */,
-				F9357ACE217ADB7600C210CC /* IRISEstimator.swift */,
+				F9357ACE217ADB7600C210CC /* ImageTransfer.swift */,
+				F9DAB0DD217F77DF00466AE9 /* Patch.swift */,
 				F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */,
 				F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */,
 				F9D095FB217ACA41000D37C3 /* Info.plist */,
@@ -223,13 +226,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9357AD3217ADC9A00C210CC /* SRCNN.mlmodel in Sources */,
-				F9357ACF217ADB7600C210CC /* IRISEstimator.swift in Sources */,
+				F9357ACF217ADB7600C210CC /* ImageTransfer.swift in Sources */,
 				F9760543217AE03300D8EEB1 /* UIImage+CVPixelBuffer.swift in Sources */,
 				F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */,
 				F9760544217AE03300D8EEB1 /* MultiArray.swift in Sources */,
 				F97988BF217ACF3E0027189E /* UIImage.swift in Sources */,
 				F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */,
 				F9760548217AE04100D8EEB1 /* MLMultiArray+Image.swift in Sources */,
+				F9DAB0DE217F77DF00466AE9 /* Patch.swift in Sources */,
 				F9760540217AE03300D8EEB1 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

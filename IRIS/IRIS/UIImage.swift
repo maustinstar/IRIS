@@ -10,7 +10,12 @@ public extension UIImage {
     
     /// - returns: `UIImage` with dimenstions scaled @2x
     public func enhance() -> UIImage? {
-        return IRISEstimator().estimate(self)
+        
+        return ImageTransfer(
+            minimumOverlap: 4,
+            inputSize: (200, 200),
+            outputSize: (200, 200))
+            .estimate(self)
     }
     
     /**
