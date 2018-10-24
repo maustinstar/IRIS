@@ -24,7 +24,7 @@ class ImageTransfer {
     struct Input {
         static var width  = 0
         static var height = 0
-        var size: (Int, Int) { get {
+        static var size: (Int, Int) { get {
             return (ImageTransfer.Input.width, ImageTransfer.Input.height)
         } }
     }
@@ -32,8 +32,8 @@ class ImageTransfer {
     struct Output {
         static var width  = 0
         static var height = 0
-        var size: (Int, Int) { get {
-            return (ImageTransfer.Input.width, ImageTransfer.Input.height)
+        static var size: (Int, Int) { get {
+            return (ImageTransfer.Output.width, ImageTransfer.Output.height)
         } }
     }
     
@@ -50,93 +50,90 @@ class ImageTransfer {
     private var totalPatches = 1
     private var patchesRendered = 0
     
-    private func decomposePatch(from image: CGImage, at postition: (Int, Int)) -> Patch {
-        
-        var rect = CGRect(
-            origin: CGPoint(
-                x: Int(postition.0) * (Input.width - Inset.horizontal * 2),
-                y: Int(postition.1) * (Input.height - Inset.vertical * 2)),
-            size: CGSize(width: Input.width, height: Input.height))
+    private func patch(from image: CGImage, at postition: (Int, Int)) -> Patch {
         
         // Account for rounding insets that do not add to image size
-        if  rect.origin.x > CGFloat(image.width - Input.width) {
-            rect.origin.x = CGFloat(image.width - Input.width)
-        }
+        let x = min(
+            postition.0 * (Input.width - Inset.horizontal * 2),
+            image.width - Input.width)
         
-        if  rect.origin.y > CGFloat(image.height - Input.height) {
-            rect.origin.y = CGFloat(image.height - Input.height)
-        }
+        let y = min(
+            postition.1 * (Input.height - Inset.vertical * 2),
+            image.height - Input.height)
+        
+        let rect = CGRect(
+            origin: CGPoint(x: x, y: y),
+            size: CGSize(width: Input.width, height: Input.height))
         
         return image.patch(in: rect)!
     }
     
-    private func predict(_ patchIn: Patch) -> Patch {
+    private func predict(_ patch: Patch) -> Patch {
         do {
-            let res = try model.prediction(image: patchIn.buffer)
-            return Patch(buffer: res.output1, position: patchIn.position, size: (Input.width, Input.height))
+            let prediction = try model.prediction(image: patch.buffer)
+            return Patch(buffer: prediction.output1, position: patch.position, size: Output.size)
         } catch {
-            fatalError()
+            fatalError("Failed to predict from image buffer.")
         }
     }
     
     private func infer(image: CGImage) -> UIImage? {
-        let size = CGSize(width: image.width, height: image.height)
-        UIGraphicsBeginImageContext(size)
         
-        let maxX = Int(ceil(Double(image.width) / Double(Input.width - Inset.minimum * 2)))
-        Inset.horizontal = Int((Double(Input.width) - Double(image.width) / Double(maxX)) / 2)
+        // Create blank image for the final render.
+        UIGraphicsBeginImageContext(image.size)
         
+        // Number of horizontal patches
+        let maxX = Int(ceil(Double(image.width)  / Double(Input.width  - Inset.minimum * 2)))
+        // Number of vertical patches
         let maxY = Int(ceil(Double(image.height) / Double(Input.height - Inset.minimum * 2)))
-        Inset.vertical = Int((Double(Input.height) - Double(image.height) / Double(maxY)) / 2)
-        
+        // Number of total patches
         totalPatches = maxX * maxY
+        
+        Inset.horizontal = Int((Double(Input.width)  - Double(image.width)  / Double(maxX)) / 2)
+        Inset.vertical   = Int((Double(Input.height) - Double(image.height) / Double(maxY)) / 2)
         
         for y in 0..<maxY {
             for x in 0..<maxX {
                 
                 // Estimate IRIS Patch
-                let patchIn = self.decomposePatch(from: image, at: (x: x, y: y))
-                let patchOut = self.predict(patchIn)
+                let patchOut = predict(patch(from: image, at: (x: x, y: y)))
                 
-                var rect = CGRect()
-                var inset = CGRect()
+                // Position in final image to draw the patch
+                let position = (
+                    (x != 0) ? patchOut.x + Inset.horizontal : 0,
+                    (y != 0) ? patchOut.y + Inset.vertical   : 0
+                )
                 
-                var drawPosition = (Int(patchOut.x) + Int(Inset.horizontal),
-                                    Int(patchOut.y) + Int(Inset.vertical))
-                var renderInset = (Inset.horizontal, Inset.vertical)
-                var (width, height) = (Output.width - Int(Inset.horizontal * 2),
-                                       Output.height - Int(Inset.vertical * 2))
+                // Inset of patch to render
+                let patchInset = (
+                    (x != 0) ? Inset.horizontal : 0,
+                    (y != 0) ? Inset.vertical   : 0
+                )
                 
-                if x == 0 {
-                    width += Int(Inset.horizontal)
-                    renderInset.0 = 0
-                    drawPosition.0 = 0
-                } else if x == maxX - 1 {
-                    width += Int(Inset.horizontal)
-                }
-                
-                if y == 0 {
-                    height += Int(Inset.vertical)
-                    renderInset.1 = 0
-                    drawPosition.1 = 0
-                } else if y == maxY - 1 {
-                    height += Int(Inset.vertical)
-                }
+                // Size of patch to render
+                let (width, height) = (
+                    (x == 0 || x == maxX - 1)
+                        ? Output.width - Int(Inset.horizontal)
+                        : Output.width - Int(Inset.horizontal * 2),
+                    (y == 0 || y == maxY - 1)
+                        ? Output.height - Int(Inset.vertical)
+                        : Output.height - Int(Inset.vertical * 2)
+                )
                 
                 // Rect within full image to render the patch
-                rect = CGRect(
-                    x: drawPosition.0, y: drawPosition.1,
+                let rect = CGRect(
+                    x: position.0, y: position.1,
                     width: width, height: height)
                 
                 // segment of patch to render (remove insets)
-                inset = CGRect(
-                    x: renderInset.0, y: renderInset.1,
+                let inset = CGRect(
+                    x: patchInset.0, y: patchInset.1,
                     width: width, height: height)
                 
                 let image = patchOut.cgImage
                 
                 guard let cropped = image!.cropping(to: inset) else {
-                    fatalError()
+                    fatalError("Patch can not be rendered")
                 }
                 // Add image to current context
                 UIImage(cgImage: cropped).draw(in: rect)

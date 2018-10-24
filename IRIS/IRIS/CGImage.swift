@@ -31,4 +31,8 @@ extension CGImage {
                      position: (Int(rect.origin.x), Int(rect.origin.y)),
                      size: (Int(rect.width), Int(rect.height)))
     }
+    
+    var size: CGSize {
+        get { return CGSize(width: width, height: height) }
+    }
 }
