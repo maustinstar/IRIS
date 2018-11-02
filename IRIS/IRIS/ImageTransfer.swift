@@ -9,7 +9,9 @@
 import Foundation
 import VideoToolbox
 
-class ImageTransfer {
+public class ImageTransfer {
+    
+    public var delegate: ImageTransferDelegate?
     
     private let model = IRISCNN2()
     
@@ -43,12 +45,16 @@ class ImageTransfer {
         static var vertical   = 0
     }
     
-    public var progress: Double {
-        get { return Double(patchesRendered) / Double(totalPatches) }
+    public var progress: CGFloat {
+        get { return CGFloat(patchesRendered) / CGFloat(totalPatches) }
     }
     
     private var totalPatches = 1
-    private var patchesRendered = 0
+    private var patchesRendered = 0 {
+        didSet {
+            delegate?.transferProgressDidChange(to: progress)
+        }
+    }
     
     private func patch(from image: CGImage, at postition: (Int, Int)) -> Patch {
         
