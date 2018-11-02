@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import UIKit
 @testable import IRIS
 
 class IRISTests: XCTestCase {
@@ -23,15 +24,20 @@ class IRISTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    let metrics = [
+        XCTPerformanceMetric.wallClockTime, XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
+        XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentVMAllocations"),
+        XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime")
+    ]
 
     func testIRISPerformance() {
         // This is an example of a performance test case.
-        let source = UIImage(named: "Sample.HEIC")!
-        var prediction = UIImage()
-        self.measure {
-            prediction = source.enhance()!
+        let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
+        var prediction: UIImage? = UIImage()
+        measureMetrics(metrics, automaticallyStartMeasuring: true) {
+            prediction = source.enhance()
         }
         print(prediction)
     }
-
 }

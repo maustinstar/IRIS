@@ -151,15 +151,14 @@ public class ImageTransfer {
         return result
     }
     
-    public func estimate(_ src: UIImage) -> UIImage? {
+    public func estimate(_ image: UIImage) -> UIImage? {
         let t = Date()
-        let resized = src.scaled()!.cgImage!
+        let resized = image.scaled()!.cgImage!
         
-        let res = infer(image: resized)!
+        let superRes = infer(image: resized)!
         
         let t2 = Date()
         print("done in: \(t2.timeIntervalSince(t)) seconds.")
-        return res
-        
+        return superRes
     }
 }

@@ -15,6 +15,8 @@
 		F9760548217AE04100D8EEB1 /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9760547217AE04100D8EEB1 /* MLMultiArray+Image.swift */; };
 		F97988BF217ACF3E0027189E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97988BE217ACF3E0027189E /* UIImage.swift */; };
 		F98B7F79218BECB8008252EE /* ImageTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F78218BECB8008252EE /* ImageTransferDelegate.swift */; };
+		F98B7F83218BF643008252EE /* Sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F82218BF643008252EE /* Sample.jpg */; };
+		F98B7F84218BF643008252EE /* Sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F82218BF643008252EE /* Sample.jpg */; };
 		F98FFBEF217FD5F100F38DA9 /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98FFBEE217FD5F100F38DA9 /* CGImage.swift */; };
 		F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9939603217C882F00696E98 /* IRISCNN2.mlmodel */; };
 		F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */; };
@@ -43,6 +45,7 @@
 		F9760547217AE04100D8EEB1 /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
 		F97988BE217ACF3E0027189E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F98B7F78218BECB8008252EE /* ImageTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransferDelegate.swift; sourceTree = "<group>"; };
+		F98B7F82218BF643008252EE /* Sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Sample.jpg; path = /Users/michaelverges/Desktop/HackGT/2018/IRIS/IRIS/IRIS/Sample.jpg; sourceTree = "<absolute>"; };
 		F98FFBEE217FD5F100F38DA9 /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
 		F9939603217C882F00696E98 /* IRISCNN2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN2.mlmodel; sourceTree = "<group>"; };
 		F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN.mlmodel; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 				F98FFBEE217FD5F100F38DA9 /* CGImage.swift */,
 				F9357ACE217ADB7600C210CC /* ImageTransfer.swift */,
 				F98B7F78218BECB8008252EE /* ImageTransferDelegate.swift */,
+				F98B7F82218BF643008252EE /* Sample.jpg */,
 				F9DAB0DD217F77DF00466AE9 /* Patch.swift */,
 				F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */,
 				F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */,
@@ -214,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98B7F83218BF643008252EE /* Sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98B7F84218BF643008252EE /* Sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
