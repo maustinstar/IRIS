@@ -138,8 +138,8 @@ public class ImageTransfer: PatchDelegate {
         Inset.horizontal = Int((Double(model.inputWidth)  - Double(image.width)  / Double(Patches.x)) / 2)
         Inset.vertical   = Int((Double(model.inputHeight) - Double(image.height) / Double(Patches.y)) / 2)
         
-        for y in 0..<Patches.x {
-            for x in 0..<Patches.y {
+        for x in 0..<Patches.x {
+            for y in 0..<Patches.y {
                 let p = patch(from: image, at: (x: x, y: y))
                 p.delegate = self
                 p.transfer(withModel: model)
