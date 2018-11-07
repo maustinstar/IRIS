@@ -14,6 +14,10 @@ class ViewController: UIViewController, UIDrawerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBAction func save(_ sender: Any) {
+        self.imageView.image.share()
+    }
+    
     lazy var drawer: UIDrawer = {
         let drawer = UIDrawer()
         drawer.delegate = self

@@ -37,6 +37,7 @@
 		F98B7F74218BE506008252EE /* UIDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F5E218BE506008252EE /* UIDrawerDelegate.swift */; };
 		F98B7F75218BE506008252EE /* UIDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F5E218BE506008252EE /* UIDrawerDelegate.swift */; };
 		F98B7F76218BE506008252EE /* UIDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F5E218BE506008252EE /* UIDrawerDelegate.swift */; };
+		F998E6462193ACE500033896 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998E6452193ACE500033896 /* Share.swift */; };
 		F9B76B84217B64EB004366BB /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B83217B64EB004366BB /* PhotosUI.framework */; };
 		F9B76B86217B64EB004366BB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B85217B64EB004366BB /* Photos.framework */; };
 		F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */; };
@@ -110,6 +111,7 @@
 		F98B7F5C218BE506008252EE /* UIDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIDrawer.xib; sourceTree = "<group>"; };
 		F98B7F5D218BE506008252EE /* PhotoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
 		F98B7F5E218BE506008252EE /* UIDrawerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDrawerDelegate.swift; sourceTree = "<group>"; };
+		F998E6452193ACE500033896 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		F9B76B81217B64EB004366BB /* IRIS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "IRIS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B76B83217B64EB004366BB /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		F9B76B85217B64EB004366BB /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -231,6 +233,7 @@
 				F9D09585217ACA02000D37C3 /* AppDelegate.swift */,
 				F976054D217AE7F200D8EEB1 /* Sample.HEIC */,
 				F9D09587217ACA02000D37C3 /* ViewController.swift */,
+				F998E6452193ACE500033896 /* Share.swift */,
 				F98B7F77218BE514008252EE /* UIDrawer */,
 				F9D09589217ACA02000D37C3 /* Main.storyboard */,
 				F9D0958C217ACA03000D37C3 /* Assets.xcassets */,
@@ -444,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9D09588217ACA02000D37C3 /* ViewController.swift in Sources */,
+				F998E6462193ACE500033896 /* Share.swift in Sources */,
 				F98B7F73218BE506008252EE /* UIDrawerDelegate.swift in Sources */,
 				F9B800A121928E060010E16D /* ImageCellDelegate.swift in Sources */,
 				F98B7F67218BE506008252EE /* ImageCell.swift in Sources */,

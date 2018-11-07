@@ -84,17 +84,22 @@ class UIDrawer: UIViewController {
     }
     
     func hide(withDuration duration: TimeInterval = 0.2) {
+        feedbackGenerator.prepare()
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.view.frame.origin.y = UIScreen.main.bounds.height
-        })
+        }) { [weak self] (_) in
+            self?.feedbackGenerator.impactOccurred()
+        }
     }
     
     func show(withDuration duration: TimeInterval = 0.2) {
+        feedbackGenerator.prepare()
         UIView.animate(withDuration: duration, animations: { [weak self] in
             let yComponent = self?.partialView
             self?.view.frame.origin.y = yComponent!
-//            self?.view.frame.size.height = (self?.fullView)!
-        })
+        }) { [weak self] (_) in
+            self?.feedbackGenerator.impactOccurred()
+        }
     }
     
     override func didReceiveMemoryWarning() {
