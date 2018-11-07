@@ -9,14 +9,10 @@
 public extension UIImage {
     
     /// - returns: `UIImage` with dimenstions scaled @2x
-    public func enhance() -> UIImage? {
-        
-        return ImageTransfer(
-            minimumOverlap: 4,
-            inputSize: (200, 200),
-            outputSize: (200, 200))
-            .estimate(self)
-    }
+//    public func enhance() -> UIImage? {
+//        
+//        return ImageTransfer.main.estimate(self)
+//    }
     
     /**
      Duplicates pixels to scale the image without quaility change

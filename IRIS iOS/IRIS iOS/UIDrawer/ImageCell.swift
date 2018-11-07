@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IRIS
 
 class ImageCell: UICollectionViewCell {
     
@@ -16,9 +17,28 @@ class ImageCell: UICollectionViewCell {
     
     @IBOutlet weak var effectView: UIVisualEffectView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    public var image: UIImage? {
+    
+    var delegate: ImageCellDelegate?
+    
+    private lazy var transferModel: ImageTransfer = {
+        return ImageTransfer.main
+    }()
+    
+    var progress: CGFloat = 0.0 {
         didSet {
-            imageView.image = image
+            // Update UI
+        }
+    }
+    
+    public var sourceImage: UIImage? {
+        didSet {
+            imageView.image = sourceImage
+        }
+    }
+    
+    public var transferImage: UIImage? {
+        didSet {
+            delegate?.didTransferImage(cell: self, image: transferImage)
         }
     }
     
@@ -49,6 +69,15 @@ class ImageCell: UICollectionViewCell {
         return layer
     }()
     
+    public func requestTransferImage() {
+        guard let sourceImage = sourceImage else {
+            fatalError("Invalid Source Image")
+        }
+        transferModel.requestTransferFrom(sourceImage, completion: { (output) in
+            self.transferImage = output
+        })
+    }
+    
     public func startAnimating(easeIn duration: TimeInterval = 0.4) {
         self.effectView.alpha = 1.0
         indicator.startAnimating()
@@ -63,5 +92,11 @@ class ImageCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageFrame.layer.mask = maskLayer
+    }
+}
+
+extension ImageCell: ImageTransferDelegate {
+    func imageTransferDidSet(progress: CGFloat) {
+        self.progress = progress
     }
 }

@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol ImageTransferDelegate {
-    func transferProgressDidChange(to: CGFloat)
+    func imageTransferDidSet(progress: CGFloat)
 }

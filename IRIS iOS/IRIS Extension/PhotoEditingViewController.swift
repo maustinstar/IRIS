@@ -42,7 +42,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         input = contentEditingInput
         enhanceQueue.addOperation {
             if let path = self.input!.fullSizeImageURL?.path {
-                self.enhancedImage = UIImage(contentsOfFile: path)!.enhance()!
+//                self.enhancedImage = UIImage(contentsOfFile: path)!.enhance()!
             }
         }
         enhanceQueue.waitUntilAllOperationsAreFinished()

@@ -8,7 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		F9357ACF217ADB7600C210CC /* ImageTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9357ACE217ADB7600C210CC /* ImageTransfer.swift */; };
-		F9357AD3217ADC9A00C210CC /* SRCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */; };
+		F94ECA03218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */; };
+		F94ECA04218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */; };
+		F94ECA07218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */; };
+		F94ECA08218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */; };
+		F94ECA0A218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */; };
+		F94ECA0B218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */; };
+		F94ECA0D218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA0C218F7AD6007EE4D4 /* StarryNight.mlmodel */; };
+		F94ECA0E218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA0C218F7AD6007EE4D4 /* StarryNight.mlmodel */; };
 		F9760540217AE03300D8EEB1 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9760539217AE03200D8EEB1 /* Math.swift */; };
 		F9760543217AE03300D8EEB1 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */; };
 		F9760544217AE03300D8EEB1 /* MultiArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976053D217AE03200D8EEB1 /* MultiArray.swift */; };
@@ -20,9 +27,13 @@
 		F98FFBEF217FD5F100F38DA9 /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98FFBEE217FD5F100F38DA9 /* CGImage.swift */; };
 		F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9939603217C882F00696E98 /* IRISCNN2.mlmodel */; };
 		F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */; };
+		F9B8009B219262010010E16D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B8009A219262010010E16D /* Model.swift */; };
+		F9B8009D219275E00010E16D /* PatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B8009C219275E00010E16D /* PatchDelegate.swift */; };
 		F9D09601217ACA41000D37C3 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D095F7217ACA41000D37C3 /* IRIS.framework */; };
 		F9D09606217ACA41000D37C3 /* IRISTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09605217ACA41000D37C3 /* IRISTests.swift */; };
 		F9D09608217ACA41000D37C3 /* IRIS.h in Headers */ = {isa = PBXBuildFile; fileRef = F9D095FA217ACA41000D37C3 /* IRIS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9D47C63218D057300671CD8 /* TestConvT-1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9D47C62218D057300671CD8 /* TestConvT-1.mlmodel */; };
+		F9D47C64218D057300671CD8 /* TestConvT-1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9D47C62218D057300671CD8 /* TestConvT-1.mlmodel */; };
 		F9DAB0DE217F77DF00466AE9 /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB0DD217F77DF00466AE9 /* Patch.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +49,10 @@
 
 /* Begin PBXFileReference section */
 		F9357ACE217ADB7600C210CC /* ImageTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransfer.swift; sourceTree = "<group>"; };
-		F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SRCNN.mlmodel; path = ../../../../../../Downloads/SRCNN.mlmodel; sourceTree = "<group>"; };
+		F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lighterSRCNN16v2.mlmodel; sourceTree = "<group>"; };
+		F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lightAsFlup.mlmodel; sourceTree = "<group>"; };
+		F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lightAsFlupTheSequel.mlmodel; sourceTree = "<group>"; };
+		F94ECA0C218F7AD6007EE4D4 /* StarryNight.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StarryNight.mlmodel; sourceTree = "<group>"; };
 		F9760539217AE03200D8EEB1 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		F976053D217AE03200D8EEB1 /* MultiArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiArray.swift; sourceTree = "<group>"; };
@@ -49,12 +63,15 @@
 		F98FFBEE217FD5F100F38DA9 /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
 		F9939603217C882F00696E98 /* IRISCNN2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN2.mlmodel; sourceTree = "<group>"; };
 		F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN.mlmodel; sourceTree = "<group>"; };
+		F9B8009A219262010010E16D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F9B8009C219275E00010E16D /* PatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDelegate.swift; sourceTree = "<group>"; };
 		F9D095F7217ACA41000D37C3 /* IRIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IRIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D095FA217ACA41000D37C3 /* IRIS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRIS.h; sourceTree = "<group>"; };
 		F9D095FB217ACA41000D37C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9D09600217ACA41000D37C3 /* IRISTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IRISTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D09605217ACA41000D37C3 /* IRISTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRISTests.swift; sourceTree = "<group>"; };
 		F9D09607217ACA41000D37C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9D47C62218D057300671CD8 /* TestConvT-1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "TestConvT-1.mlmodel"; sourceTree = "<group>"; };
 		F9DAB0DD217F77DF00466AE9 /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +94,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F94ECA05218F74B9007EE4D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9B8009A219262010010E16D /* Model.swift */,
+				F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */,
+				F9939603217C882F00696E98 /* IRISCNN2.mlmodel */,
+				F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */,
+				F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */,
+				F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */,
+				F94ECA0C218F7AD6007EE4D4 /* StarryNight.mlmodel */,
+				F9D47C62218D057300671CD8 /* TestConvT-1.mlmodel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F9D095ED217ACA41000D37C3 = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +135,14 @@
 				F976053D217AE03200D8EEB1 /* MultiArray.swift */,
 				F9760547217AE04100D8EEB1 /* MLMultiArray+Image.swift */,
 				F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */,
-				F9939603217C882F00696E98 /* IRISCNN2.mlmodel */,
 				F97988BE217ACF3E0027189E /* UIImage.swift */,
 				F98FFBEE217FD5F100F38DA9 /* CGImage.swift */,
 				F9357ACE217ADB7600C210CC /* ImageTransfer.swift */,
 				F98B7F78218BECB8008252EE /* ImageTransferDelegate.swift */,
+				F94ECA05218F74B9007EE4D4 /* Models */,
 				F98B7F82218BF643008252EE /* Sample.jpg */,
 				F9DAB0DD217F77DF00466AE9 /* Patch.swift */,
-				F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */,
-				F9357AD2217ADC9A00C210CC /* SRCNN.mlmodel */,
+				F9B8009C219275E00010E16D /* PatchDelegate.swift */,
 				F9D095FB217ACA41000D37C3 /* Info.plist */,
 			);
 			path = IRIS;
@@ -237,18 +268,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9357AD3217ADC9A00C210CC /* SRCNN.mlmodel in Sources */,
 				F9357ACF217ADB7600C210CC /* ImageTransfer.swift in Sources */,
 				F98FFBEF217FD5F100F38DA9 /* CGImage.swift in Sources */,
 				F9760543217AE03300D8EEB1 /* UIImage+CVPixelBuffer.swift in Sources */,
+				F9D47C63218D057300671CD8 /* TestConvT-1.mlmodel in Sources */,
 				F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */,
+				F9B8009D219275E00010E16D /* PatchDelegate.swift in Sources */,
 				F9760544217AE03300D8EEB1 /* MultiArray.swift in Sources */,
 				F97988BF217ACF3E0027189E /* UIImage.swift in Sources */,
 				F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */,
+				F94ECA03218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */,
 				F9760548217AE04100D8EEB1 /* MLMultiArray+Image.swift in Sources */,
+				F9B8009B219262010010E16D /* Model.swift in Sources */,
+				F94ECA0D218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */,
 				F98B7F79218BECB8008252EE /* ImageTransferDelegate.swift in Sources */,
 				F9DAB0DE217F77DF00466AE9 /* Patch.swift in Sources */,
+				F94ECA07218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */,
 				F9760540217AE03300D8EEB1 /* Math.swift in Sources */,
+				F94ECA0A218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9D09606217ACA41000D37C3 /* IRISTests.swift in Sources */,
+				F94ECA04218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */,
+				F94ECA0E218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */,
+				F94ECA08218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */,
+				F9D47C64218D057300671CD8 /* TestConvT-1.mlmodel in Sources */,
+				F94ECA0B218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

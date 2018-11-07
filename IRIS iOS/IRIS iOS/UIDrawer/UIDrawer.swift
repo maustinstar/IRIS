@@ -150,21 +150,21 @@ extension UIDrawer: UIGestureRecognizerDelegate {
     
 }
 
-extension UIDrawer: UICollectionViewDelegate {
+extension UIDrawer: UICollectionViewDelegate, ImageCellDelegate {
+    
+    func didTransferImage(cell: ImageCell, image: UIImage?) {
+        cell.stopAnimating()
+        self.selectedImage = image
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let asset = (collectionView.dataSource as? PhotoDataSource)?
-            .photos?.object(at: indexPath.row) else {
-                return
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCell else {
+            fatalError("Expected Image Cell")
         }
         
-        (collectionView.cellForItem(at: indexPath) as! ImageCell).startAnimating()
-        PHImageManager.default().requestImageData(for: asset, options: nil) { (data, string, orientation, _) in
-            self.selectedImage = UIImage(data: data!)?.enhance()
-            
-            DispatchQueue.main.async {
-                (self.collectionView.cellForItem(at: indexPath) as! ImageCell).stopAnimating()
-            }
-        }
+        cell.startAnimating()
+        cell.requestTransferImage()
     }
 }

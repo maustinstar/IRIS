@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension CGImage {
-    internal func patch(at position: (Int, Int), size: (Int, Int)) -> Patch? {
+public extension CGImage {
+    public func patch(at position: (Int, Int), size: (Int, Int)) -> Patch? {
         let rect = CGRect(
             origin: CGPoint(x: position.0, y: position.1),
             size: CGSize(width: size.0, height: size.1))
@@ -17,7 +17,7 @@ extension CGImage {
         return self.patch(in: rect)
     }
     
-    internal func patch(in rect: CGRect) -> Patch? {
+    public func patch(in rect: CGRect) -> Patch? {
         guard let cropped = self.cropping(to: rect) else {
             print("Cropping rectangle is beyond the image bounds")
             return nil
@@ -32,7 +32,7 @@ extension CGImage {
                      size: (Int(rect.width), Int(rect.height)))
     }
     
-    var size: CGSize {
+    public var size: CGSize {
         get { return CGSize(width: width, height: height) }
     }
 }

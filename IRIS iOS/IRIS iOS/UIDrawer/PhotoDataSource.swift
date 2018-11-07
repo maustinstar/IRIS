@@ -40,15 +40,13 @@ class PhotoDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        // Configure the cell
-        if let imageCell = cell as? ImageCell {
-            
-            let asset = photos!.object(at: indexPath.row)
-            
-            
-            PHImageManager.default().requestImageData(for: asset, options: nil) { (data, string, orientation, _) in
-                imageCell.image = UIImage(data: data!)
-            }
+        
+        guard let imageCell = cell as? ImageCell, let asset = photos?.object(at: indexPath.row) else {
+            fatalError("Expected Image Cell")
+        }
+        
+        PHImageManager.default().requestImageData(for: asset, options: nil) { (data, string, orientation, _) in
+            imageCell.sourceImage = UIImage(data: data!)
         }
         
         return cell

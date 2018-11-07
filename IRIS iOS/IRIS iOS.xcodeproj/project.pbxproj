@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F9266BFE219291D6003B0E91 /* ImageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B800A021928E060010E16D /* ImageCellDelegate.swift */; };
+		F9266BFF219291DA003B0E91 /* ImageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B800A021928E060010E16D /* ImageCellDelegate.swift */; };
+		F9266C00219291DA003B0E91 /* ImageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B800A021928E060010E16D /* ImageCellDelegate.swift */; };
+		F9266C012192921B003B0E91 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9266BFB219291C1003B0E91 /* IRIS.framework */; };
+		F9266C03219294E8003B0E91 /* IRIS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F9266BFB219291C1003B0E91 /* IRIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F95F0622217D4EE400A7AE5F /* ExtensionAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F95F0621217D4EE400A7AE5F /* ExtensionAssets.xcassets */; };
-		F95F0627217E333000A7AE5F /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; };
-		F95F0628217E333700A7AE5F /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; };
-		F95F0629217E333700A7AE5F /* IRIS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F926E9F9217B1A1400F67F39 /* IRIS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F98B7F5F218BE506008252EE /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F59218BE506008252EE /* ImageCell.xib */; };
 		F98B7F60218BE506008252EE /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F59218BE506008252EE /* ImageCell.xib */; };
 		F98B7F61218BE506008252EE /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F59218BE506008252EE /* ImageCell.xib */; };
@@ -40,6 +42,7 @@
 		F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */; };
 		F9B76B8C217B64EB004366BB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B76B8A217B64EB004366BB /* MainInterface.storyboard */; };
 		F9B76B90217B64EB004366BB /* IRIS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F9B76B81217B64EB004366BB /* IRIS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F9B800A121928E060010E16D /* ImageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B800A021928E060010E16D /* ImageCellDelegate.swift */; };
 		F9D09586217ACA02000D37C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09585217ACA02000D37C3 /* AppDelegate.swift */; };
 		F9D09588217ACA02000D37C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09587217ACA02000D37C3 /* ViewController.swift */; };
 		F9D0958B217ACA02000D37C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9D09589217ACA02000D37C3 /* Main.storyboard */; };
@@ -74,15 +77,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F95F062A217E333700A7AE5F /* Embed Frameworks */ = {
+		F9266C022192942A003B0E91 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F95F0629217E333700A7AE5F /* IRIS.framework in Embed Frameworks */,
+				F9266C03219294E8003B0E91 /* IRIS.framework in CopyFiles */,
 			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F9B76B94217B64EB004366BB /* Embed App Extensions */ = {
@@ -99,7 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F926E9F9217B1A1400F67F39 /* IRIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IRIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9266BFB219291C1003B0E91 /* IRIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IRIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95F0621217D4EE400A7AE5F /* ExtensionAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ExtensionAssets.xcassets; sourceTree = "<group>"; };
 		F976054D217AE7F200D8EEB1 /* Sample.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sample.HEIC; sourceTree = "<group>"; };
 		F98B7F59218BE506008252EE /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
 		F9B76B8B217B64EB004366BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		F9B76B8D217B64EB004366BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9B800A021928E060010E16D /* ImageCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellDelegate.swift; sourceTree = "<group>"; };
 		F9D09582217ACA02000D37C3 /* IRIS iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRIS iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D09585217ACA02000D37C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9D09587217ACA02000D37C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,8 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F95F0627217E333000A7AE5F /* IRIS.framework in Frameworks */,
-				F95F0628217E333700A7AE5F /* IRIS.framework in Frameworks */,
+				F9266C012192921B003B0E91 /* IRIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				F98B7F5B218BE506008252EE /* ImageCell.swift */,
+				F9B800A021928E060010E16D /* ImageCellDelegate.swift */,
 				F98B7F59218BE506008252EE /* ImageCell.xib */,
 				F98B7F5D218BE506008252EE /* PhotoDataSource.swift */,
 				F98B7F5A218BE506008252EE /* UIDrawer.swift */,
@@ -201,7 +204,7 @@
 		F9D09579217ACA02000D37C3 = {
 			isa = PBXGroup;
 			children = (
-				F926E9F9217B1A1400F67F39 /* IRIS.framework */,
+				F9266BFB219291C1003B0E91 /* IRIS.framework */,
 				F9D09584217ACA02000D37C3 /* IRIS iOS */,
 				F9D09599217ACA03000D37C3 /* IRIS iOSTests */,
 				F9D095A4217ACA03000D37C3 /* IRIS iOSUITests */,
@@ -283,7 +286,7 @@
 				F9D0957F217ACA02000D37C3 /* Frameworks */,
 				F9D09580217ACA02000D37C3 /* Resources */,
 				F9B76B94217B64EB004366BB /* Embed App Extensions */,
-				F95F062A217E333700A7AE5F /* Embed Frameworks */,
+				F9266C022192942A003B0E91 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -338,7 +341,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Michael Verges";
 				TargetAttributes = {
 					F9B76B80217B64EB004366BB = {
@@ -429,6 +432,7 @@
 			files = (
 				F98B7F66218BE506008252EE /* UIDrawer.swift in Sources */,
 				F98B7F72218BE506008252EE /* PhotoDataSource.swift in Sources */,
+				F9266BFE219291D6003B0E91 /* ImageCellDelegate.swift in Sources */,
 				F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */,
 				F98B7F76218BE506008252EE /* UIDrawerDelegate.swift in Sources */,
 				F98B7F6A218BE506008252EE /* ImageCell.swift in Sources */,
@@ -441,6 +445,7 @@
 			files = (
 				F9D09588217ACA02000D37C3 /* ViewController.swift in Sources */,
 				F98B7F73218BE506008252EE /* UIDrawerDelegate.swift in Sources */,
+				F9B800A121928E060010E16D /* ImageCellDelegate.swift in Sources */,
 				F98B7F67218BE506008252EE /* ImageCell.swift in Sources */,
 				F98B7F63218BE506008252EE /* UIDrawer.swift in Sources */,
 				F98B7F6F218BE506008252EE /* PhotoDataSource.swift in Sources */,
@@ -454,6 +459,7 @@
 			files = (
 				F98B7F64218BE506008252EE /* UIDrawer.swift in Sources */,
 				F98B7F70218BE506008252EE /* PhotoDataSource.swift in Sources */,
+				F9266BFF219291DA003B0E91 /* ImageCellDelegate.swift in Sources */,
 				F9D0959B217ACA03000D37C3 /* IRIS_iOSTests.swift in Sources */,
 				F98B7F74218BE506008252EE /* UIDrawerDelegate.swift in Sources */,
 				F98B7F68218BE506008252EE /* ImageCell.swift in Sources */,
@@ -466,6 +472,7 @@
 			files = (
 				F98B7F65218BE506008252EE /* UIDrawer.swift in Sources */,
 				F98B7F71218BE506008252EE /* PhotoDataSource.swift in Sources */,
+				F9266C00219291DA003B0E91 /* ImageCellDelegate.swift in Sources */,
 				F9D095A6217ACA03000D37C3 /* IRIS_iOSUITests.swift in Sources */,
 				F98B7F75218BE506008252EE /* UIDrawerDelegate.swift in Sources */,
 				F98B7F69218BE506008252EE /* ImageCell.swift in Sources */,
