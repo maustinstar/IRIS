@@ -14,13 +14,13 @@ public class ImageTransfer: PatchDelegate {
     var completion: ((UIImage) -> Void)?
     
     func didTransferPatch(_ patch: Patch) {
-//        outputImage = render(patch, onto: outputImage)
+        render(patch)
         patchesRendered += 1
         print(progress)
     }
     
     public static let main = ImageTransfer(
-        model: lightAsFlup(),
+        model: IRISCNN2(),
         minimumOverlap: 4
     )
     
@@ -47,6 +47,8 @@ public class ImageTransfer: PatchDelegate {
         didSet {
             delegate?.imageTransferDidSet(progress: progress)
             if patchesRendered == Patches.total && completion != nil {
+                let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
                 completion!(outputImage!)
             }
         }
@@ -59,19 +61,13 @@ public class ImageTransfer: PatchDelegate {
     }
     
     private var inputImage: UIImage?
-    private lazy var outputImage: UIImage? = nil
     private var outputImageSize: CGSize? {
         return CGSize(width:  Int(inputImage!.size.width) * model.scaleFactor,
                       height: Int(inputImage!.size.height) * model.scaleFactor)
     }
     
-    private func render(_ patch: Patch, onto image: UIImage?) -> UIImage? {
+    private func render(_ patch: Patch) {
         
-        UIGraphicsBeginImageContext(outputImageSize!)
-        
-        if let image = image {
-            image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
-        }
         
         let position = (
             (patch.x != 0) ? (patch.x + Inset.horizontal) * model.scaleFactor : 0,
@@ -105,11 +101,9 @@ public class ImageTransfer: PatchDelegate {
         guard let croppedImage = patchImage!.cropping(to: inset) else {
             fatalError("Patch can not be rendered")
         }
+        
         // Add image to current context
         UIImage(cgImage: croppedImage).draw(in: rect)
-        let result = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return result
     }
     
     private func patch(from image: CGImage, at postition: (Int, Int)) -> Patch {
@@ -131,6 +125,8 @@ public class ImageTransfer: PatchDelegate {
     }
     
     private func infer(image: CGImage) {
+        
+        UIGraphicsBeginImageContext(outputImageSize!)
         
         // Number of horizontal patches
         Patches.x = Int(ceil(Double(image.width)  / Double(model.inputWidth  - Inset.minimum * 2)))

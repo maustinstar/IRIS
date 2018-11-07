@@ -50,15 +50,22 @@ public class Patch {
     }
     
     public func transfer(withModel model: Model) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                let newPatch = try self.getTransfer(fromModel: model)
-                self.delegate?.didTransferPatch(newPatch)
-                newPatch.delegate = nil 
-            } catch {
-                fatalError("Patch failed to transfer.")
-            }
+        do {
+            let newPatch = try self.getTransfer(fromModel: model)
+            self.delegate?.didTransferPatch(newPatch)
+            newPatch.delegate = nil
+        } catch {
+            fatalError("Patch failed to transfer.")
         }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            do {
+//                let newPatch = try self.getTransfer(fromModel: model)
+//                self.delegate?.didTransferPatch(newPatch)
+//                newPatch.delegate = nil
+//            } catch {
+//                fatalError("Patch failed to transfer.")
+//            }
+//        }
     }
     
     func getTransfer(fromModel model: Model) throws -> Patch {
