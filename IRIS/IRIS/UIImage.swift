@@ -29,4 +29,50 @@ public extension UIImage {
         UIGraphicsEndImageContext()
         return result
     }
+    
+//    func flipVertically() -> UIImage {
+//        var newOrient:UIImage.Orientation
+//        switch imageOrientation {
+//        case .up:
+//            newOrient = .downMirrored
+//        case .upMirrored:
+//            newOrient = .down
+//        case .down:
+//            newOrient = .upMirrored
+//        case .downMirrored:
+//            newOrient = .up
+//        case .left:
+//            newOrient = .leftMirrored
+//        case .leftMirrored:
+//            newOrient = .left
+//        case .right:
+//            newOrient = .rightMirrored
+//        case .rightMirrored:
+//            newOrient = .right
+//        }
+//        return UIImage(CGImage: self.cgImage!, scale: self.scale, orientation: newOrient)
+//    }
+//    
+//    func flipHorizontally() -> UIImage {
+//        var newOrient:UIImage.Orientation
+//        switch imageOrientation {
+//        case .Up:
+//            newOrient = .DownMirrored
+//        case .UpMirrored:
+//            newOrient = .Down
+//        case .Down:
+//            newOrient = .UpMirrored
+//        case .DownMirrored:
+//            newOrient = .Up
+//        case .Left:
+//            newOrient = .LeftMirrored
+//        case .LeftMirrored:
+//            newOrient = .Left
+//        case .Right:
+//            newOrient = .RightMirrored
+//        case .RightMirrored:
+//            newOrient = .Right
+//        }
+//        return UIImage(CGImage: self.cgImage, scale: self.scale, orientation: newOrient)
+//    }
 }

@@ -163,7 +163,7 @@ extension UIDrawer: UICollectionViewDelegate, ImageCellDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCell else {
             fatalError("Expected Image Cell")
         }
-        
+        cell.delegate = self
         cell.startAnimating()
         cell.requestTransferImage()
     }

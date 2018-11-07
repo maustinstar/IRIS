@@ -14,9 +14,9 @@ public class ImageTransfer: PatchDelegate {
     var completion: ((UIImage) -> Void)?
     
     func didTransferPatch(_ patch: Patch) {
-        render(patch)
+        render(patch, in: renderContext!)
         patchesRendered += 1
-        print(progress)
+//        print(progress)
     }
     
     public static let main = ImageTransfer(
@@ -47,9 +47,11 @@ public class ImageTransfer: PatchDelegate {
         didSet {
             delegate?.imageTransferDidSet(progress: progress)
             if patchesRendered == Patches.total && completion != nil {
-                let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                completion!(outputImage!)
+                DispatchQueue.main.async {
+                    let outputImage = UIGraphicsGetImageFromCurrentImageContext()!
+                    UIGraphicsEndImageContext()
+                    self.completion!(outputImage)
+                }
             }
         }
     }
@@ -66,28 +68,28 @@ public class ImageTransfer: PatchDelegate {
                       height: Int(inputImage!.size.height) * model.scaleFactor)
     }
     
-    private func render(_ patch: Patch) {
-        
+    var renderContext: CGContext?
+    private func render(_ patch: Patch, in context: CGContext) {
         
         let position = (
-            (patch.x != 0) ? (patch.x + Inset.horizontal) * model.scaleFactor : 0,
-            (patch.y != 0) ? (patch.y + Inset.vertical)   * model.scaleFactor : 0
+            (patch.index.0 != 0) ? patch.x + Inset.horizontal * model.scaleFactor : 0,
+            (patch.index.1 != 0) ? patch.y + Inset.vertical   * model.scaleFactor : 0
         )
         
         // Inset of patch to render
         let patchInset = (
-            (patch.x != 0) ? Inset.horizontal : 0,
-            (patch.y != 0) ? Inset.vertical   : 0
+            (patch.index.0 != 0) ? Inset.horizontal * model.scaleFactor: 0,
+            (patch.index.1 != 0) ? Inset.vertical   * model.scaleFactor: 0
         )
         
         // Size of patch to render
         let (width, height) = (
-            (patch.x == 0 || patch.x == Patches.x - 1)
-                ? model.outputWidth - Int(Inset.horizontal * model.scaleFactor)
-                : model.outputWidth - Int(Inset.horizontal * model.scaleFactor * 2),
-            (patch.y == 0 || patch.y == Patches.y - 1)
-                ? model.outputHeight - Int(Inset.vertical * model.scaleFactor)
-                : model.outputHeight - Int(Inset.vertical * model.scaleFactor * 2)
+            (patch.index.0 == 0 || patch.index.0 == Patches.x - 1)
+                ? patch.width - Int(Inset.horizontal * model.scaleFactor)
+                : patch.width - Int(Inset.horizontal * model.scaleFactor * 2),
+            (patch.index.1 == 0 || patch.index.1 == Patches.y - 1)
+                ? patch.height - Int(Inset.vertical * model.scaleFactor)
+                : patch.height - Int(Inset.vertical * model.scaleFactor * 2)
         )
         
         // Rect within full image to render the patch
@@ -101,9 +103,10 @@ public class ImageTransfer: PatchDelegate {
         guard let croppedImage = patchImage!.cropping(to: inset) else {
             fatalError("Patch can not be rendered")
         }
-        
-        // Add image to current context
-        UIImage(cgImage: croppedImage).draw(in: rect)
+        // Add image to render context
+        UIGraphicsPushContext(renderContext!)
+        UIImage(cgImage: croppedImage, scale: 1.0, orientation: inputImage!.imageOrientation).draw(in: rect)
+//        renderContext?.draw(croppedImage, in: rect) // renders flipped?
     }
     
     private func patch(from image: CGImage, at postition: (Int, Int)) -> Patch {
@@ -120,17 +123,16 @@ public class ImageTransfer: PatchDelegate {
         let rect = CGRect(
             origin: CGPoint(x: x, y: y),
             size: CGSize(width: model.inputWidth, height: model.inputHeight))
-        
-        return image.patch(in: rect)!
+        let patch = image.patch(in: rect, at: postition)!
+        return patch
     }
     
     private func infer(image: CGImage) {
         
         UIGraphicsBeginImageContext(outputImageSize!)
+        renderContext = UIGraphicsGetCurrentContext()
         
-        // Number of horizontal patches
         Patches.x = Int(ceil(Double(image.width)  / Double(model.inputWidth  - Inset.minimum * 2)))
-        // Number of vertical patches
         Patches.y = Int(ceil(Double(image.height) / Double(model.inputHeight - Inset.minimum * 2)))
         
         Inset.horizontal = Int((Double(model.inputWidth)  - Double(image.width)  / Double(Patches.x)) / 2)
@@ -146,11 +148,13 @@ public class ImageTransfer: PatchDelegate {
     }
     
     public func requestTransferFrom(_ image: UIImage, completion: ((UIImage) -> Void)? = nil) {
-        inputImage = image
+        patchesRendered = 0
+        self.completion = completion
         var resized = image
         if model.scaleFactor == 1 {
             resized = image.scaled()!
         }
+        self.inputImage = resized
         
         infer(image: resized.cgImage!)
     }

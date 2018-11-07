@@ -24,7 +24,7 @@ class IRISTests: XCTestCase {
         
         let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
         let rect2 = CGRect(origin: CGPoint.zero, size: CGSize(width: 200, height: 200))
-        let patch2 = source.cgImage!.patch(in: rect2)
+        let patch2 = source.cgImage!.patch(in: rect2, at: (0 ,0))
         let model2 = IRISCNN2()
         
         measure {
@@ -43,7 +43,7 @@ class IRISTests: XCTestCase {
         // Create Patch
         let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
         let rect = CGRect(origin: CGPoint.zero, size: CGSize(width: 256, height: 256))
-        let patch = source.cgImage!.patch(in: rect)
+        let patch = source.cgImage!.patch(in: rect, at: (0 ,0))
         let model = TestConvT_1_1()
         
         // Attempt Prediction
@@ -63,7 +63,7 @@ class IRISTests: XCTestCase {
         // Create Patch
         let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
         let rect = CGRect(origin: CGPoint.zero, size: CGSize(width: 256, height: 256))
-        let patch = source.cgImage!.patch(in: rect)
+        let patch = source.cgImage!.patch(in: rect, at: (0 ,0))
         let model = lighterSRCNN16v2()
         // Attempt Prediction
         
@@ -82,7 +82,7 @@ class IRISTests: XCTestCase {
         // Create Patch
         let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
         let rect = CGRect(origin: CGPoint.zero, size: CGSize(width: 512, height: 512))
-        let patch = source.cgImage!.patch(in: rect)
+        let patch = source.cgImage!.patch(in: rect, at: (0 ,0))
         let model = lightAsFlupTheSequel()
         // Attempt Prediction
         
@@ -101,7 +101,7 @@ class IRISTests: XCTestCase {
         // Create Patch
         let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
         let rect = CGRect(origin: CGPoint.zero, size: CGSize(width: 256, height: 256))
-        let patch = source.cgImage!.patch(in: rect)
+        let patch = source.cgImage!.patch(in: rect, at: (0 ,0))
         let model = lightAsFlup()
         // Attempt Prediction
         
@@ -120,7 +120,7 @@ class IRISTests: XCTestCase {
         // Create Patch
         let source = UIImage(named: "Sample.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
         let rect = CGRect(origin: CGPoint.zero, size: CGSize(width: 720, height: 720))
-        let patch = source.cgImage!.patch(in: rect)
+        let patch = source.cgImage!.patch(in: rect, at: (0 ,0))
         let model = StarryNight()
         // Attempt Prediction
         

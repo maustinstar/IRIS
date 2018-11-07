@@ -168,12 +168,10 @@ extension MultiArray {
         
         
         guard shape.count == 3 else {
-            print("Expected a multi-array with 3 dimensions, got \(shape)")
-            return nil
+            fatalError("Expected a multi-array with 3 dimensions, got \(shape)")
         }
         guard shape[0] == 3 else {
-            print("Expected first dimension to have 3 channels, got \(shape[0])")
-            return nil
+            fatalError("Expected first dimension to have 3 channels, got \(shape[0])")
         }
 
         let height = shape[1]

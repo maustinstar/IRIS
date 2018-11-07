@@ -14,10 +14,10 @@ public extension CGImage {
             origin: CGPoint(x: position.0, y: position.1),
             size: CGSize(width: size.0, height: size.1))
         
-        return self.patch(in: rect)
+        return self.patch(in: rect, at: position)
     }
     
-    public func patch(in rect: CGRect) -> Patch? {
+    public func patch(in rect: CGRect, at index: (Int, Int)) -> Patch? {
         guard let cropped = self.cropping(to: rect) else {
             print("Cropping rectangle is beyond the image bounds")
             return nil
@@ -29,7 +29,8 @@ public extension CGImage {
         }
         return Patch(buffer: buffer,
                      position: (Int(rect.origin.x), Int(rect.origin.y)),
-                     size: (Int(rect.width), Int(rect.height)))
+                     size: (Int(rect.width), Int(rect.height)),
+                     index: index)
     }
     
     public var size: CGSize {
