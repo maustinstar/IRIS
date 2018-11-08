@@ -14,6 +14,31 @@ class ViewController: UIViewController, UIDrawerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var transferImage: UIImage?
+    var originalImage: UIImage?
+    
+    @IBOutlet weak var tag: UILabel!
+    
+    var isPreviewingOriginal: Bool = false {
+        didSet {
+            switch isPreviewingOriginal {
+            case true:
+                imageView.image = originalImage
+                tag.isHidden = false
+            default:
+                imageView.image = transferImage
+                tag.isHidden = true
+            }
+        }
+    }
+    
+    @IBAction func previewOriginal(_ sender: Any) {
+        isPreviewingOriginal = true
+    }
+    @IBAction func exitPreview(_ sender: Any) {
+        isPreviewingOriginal = false
+    }
+    
     @IBAction func save(_ sender: Any) {
         self.imageView.image.share()
     }
@@ -33,7 +58,12 @@ class ViewController: UIViewController, UIDrawerDelegate {
     }()
     
     func drawerDidSelect(image: UIImage?) {
-        self.imageView.image = image
+        originalImage = image
+    }
+    
+    func drawerDidTransfer(image: UIImage?) {
+        transferImage = image
+        imageView.image = transferImage
     }
     
     override func viewDidLoad() {

@@ -25,6 +25,12 @@ class UIDrawer: UIViewController {
         }
     }
     
+    var newImage: UIImage? {
+        didSet {
+            delegate?.drawerDidTransfer(image: newImage)
+        }
+    }
+    
     // Photo data sources
     
     lazy var recentPhotos: PhotoDataSource = {
@@ -159,7 +165,7 @@ extension UIDrawer: UICollectionViewDelegate, ImageCellDelegate {
     
     func didTransferImage(cell: ImageCell, image: UIImage?) {
         cell.stopAnimating()
-        self.selectedImage = image
+        self.newImage = image
     }
     
     
@@ -168,6 +174,7 @@ extension UIDrawer: UICollectionViewDelegate, ImageCellDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCell else {
             fatalError("Expected Image Cell")
         }
+        self.selectedImage = cell.sourceImage
         cell.delegate = self
         cell.startAnimating()
         cell.requestTransferImage()

@@ -10,4 +10,5 @@ import UIKit
 
 protocol UIDrawerDelegate {
     func drawerDidSelect(image: UIImage?)
+    func drawerDidTransfer(image: UIImage?)
 }
