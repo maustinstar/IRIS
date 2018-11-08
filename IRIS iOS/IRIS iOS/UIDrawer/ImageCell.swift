@@ -16,8 +16,8 @@ class ImageCell: UICollectionViewCell {
     @IBOutlet weak var imageFrame: UIView!
     
     @IBOutlet weak var effectView: UIVisualEffectView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var progressView: UIProgressView!
     var delegate: ImageCellDelegate?
     
     private lazy var transferModel: ImageTransfer = {
@@ -26,7 +26,7 @@ class ImageCell: UICollectionViewCell {
     
     var progress: CGFloat = 0.0 {
         didSet {
-            // Update UI
+            progressView.progress = Float(progress)
         }
     }
     
@@ -46,11 +46,11 @@ class ImageCell: UICollectionViewCell {
         didSet {
             switch isSelected {
             case true:
-                imageFrame.layer.borderColor = UIColor.yellow.cgColor
-                imageFrame.layer.cornerRadius = 18
-                imageFrame.layer.borderWidth = 4
+                // update UI
+                break
             default:
-                imageFrame.layer.borderWidth = 0
+                // update UI
+                break
             }
         }
     }
@@ -73,6 +73,7 @@ class ImageCell: UICollectionViewCell {
         guard let sourceImage = sourceImage else {
             fatalError("Invalid Source Image")
         }
+        transferModel.delegate = self
         transferModel.requestTransferFrom(sourceImage, completion: { (output) in
             self.transferImage = output
         })
@@ -80,12 +81,10 @@ class ImageCell: UICollectionViewCell {
     
     public func startAnimating(easeIn duration: TimeInterval = 0.4) {
         self.effectView.alpha = 1.0
-        indicator.startAnimating()
     }
     
     public func stopAnimating() {
         self.effectView.alpha = 0.0
-        indicator.stopAnimating()
     }
 
 

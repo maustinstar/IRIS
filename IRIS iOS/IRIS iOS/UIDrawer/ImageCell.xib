@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,20 +36,18 @@
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uH-hU-aHw">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HiS-Sv-fot">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="HiS-Sv-fot">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="95j-ak-dfL">
-                                                        <rect key="frame" x="42" y="52" width="37" height="37"/>
-                                                    </activityIndicatorView>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8EU-F1-MnN">
+                                                        <rect key="frame" x="8" y="69" width="104" height="2"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="8" id="i2X-YO-FxZ"/>
+                                                        </constraints>
+                                                    </progressView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="95j-ak-dfL" secondAttribute="trailing" constant="41" id="9nh-VG-hEx"/>
-                                                    <constraint firstItem="95j-ak-dfL" firstAttribute="leading" secondItem="HiS-Sv-fot" secondAttribute="leading" constant="42" id="WyU-iG-RDW"/>
-                                                    <constraint firstItem="95j-ak-dfL" firstAttribute="top" secondItem="HiS-Sv-fot" secondAttribute="top" constant="52" id="tKQ-sz-bkt"/>
-                                                    <constraint firstAttribute="bottom" secondItem="95j-ak-dfL" secondAttribute="bottom" constant="51" id="xs6-pD-POn"/>
-                                                </constraints>
                                             </view>
                                             <vibrancyEffect>
                                                 <blurEffect style="light"/>
@@ -63,11 +61,15 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HKo-x0-JLR" firstAttribute="leading" secondItem="7LX-pL-ooY" secondAttribute="leading" id="2FF-7L-7t3"/>
+                            <constraint firstItem="8EU-F1-MnN" firstAttribute="centerY" secondItem="7LX-pL-ooY" secondAttribute="centerY" id="4Bh-LC-H9S"/>
                             <constraint firstAttribute="trailing" secondItem="HKo-x0-JLR" secondAttribute="trailing" id="EgZ-9u-Q8p"/>
                             <constraint firstAttribute="trailing" secondItem="NPk-s6-g0v" secondAttribute="trailing" id="II4-rH-M6D"/>
                             <constraint firstAttribute="bottom" secondItem="HKo-x0-JLR" secondAttribute="bottom" id="WfD-x3-mFn"/>
                             <constraint firstAttribute="bottom" secondItem="NPk-s6-g0v" secondAttribute="bottom" id="bZl-2e-5f1"/>
+                            <constraint firstItem="8EU-F1-MnN" firstAttribute="leading" secondItem="7LX-pL-ooY" secondAttribute="leading" constant="8" id="dIQ-nB-vEr"/>
                             <constraint firstItem="HKo-x0-JLR" firstAttribute="top" secondItem="7LX-pL-ooY" secondAttribute="top" id="gLJ-Yf-MDX"/>
+                            <constraint firstAttribute="trailing" secondItem="8EU-F1-MnN" secondAttribute="trailing" constant="8" id="qFn-GO-zc0"/>
+                            <constraint firstItem="8EU-F1-MnN" firstAttribute="centerX" secondItem="7LX-pL-ooY" secondAttribute="centerX" id="s31-6d-47L"/>
                             <constraint firstItem="NPk-s6-g0v" firstAttribute="top" secondItem="7LX-pL-ooY" secondAttribute="top" id="sQf-X4-FTd"/>
                             <constraint firstItem="NPk-s6-g0v" firstAttribute="leading" secondItem="7LX-pL-ooY" secondAttribute="leading" id="wp9-oa-jdo"/>
                         </constraints>
@@ -89,9 +91,10 @@
                 <outlet property="effectView" destination="NPk-s6-g0v" id="zNK-Tb-Xb0"/>
                 <outlet property="imageFrame" destination="7LX-pL-ooY" id="MOp-Ri-28Q"/>
                 <outlet property="imageView" destination="HKo-x0-JLR" id="V3T-Ir-M2m"/>
-                <outlet property="indicator" destination="95j-ak-dfL" id="vFa-Gc-Agf"/>
+                <outlet property="progressView" destination="8EU-F1-MnN" id="X3g-vy-ZRo"/>
                 <outlet property="view" destination="R20-4k-VDS" id="Xl3-dl-9uN"/>
             </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="55.772113943028494"/>
         </collectionViewCell>
     </objects>
 </document>

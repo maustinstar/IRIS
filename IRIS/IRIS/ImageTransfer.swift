@@ -45,7 +45,9 @@ public class ImageTransfer: PatchDelegate {
     
     private var patchesRendered = 0 {
         didSet {
-            delegate?.imageTransferDidSet(progress: progress)
+            DispatchQueue.main.async {
+                self.delegate?.imageTransferDidSet(progress: self.progress)
+            }
             if patchesRendered == Patches.total && completion != nil {
                 DispatchQueue.main.async {
                     let outputImage = UIGraphicsGetImageFromCurrentImageContext()!

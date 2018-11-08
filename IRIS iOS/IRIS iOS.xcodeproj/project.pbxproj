@@ -172,8 +172,8 @@
 		F98B7F77218BE514008252EE /* UIDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				F98B7F5B218BE506008252EE /* ImageCell.swift */,
 				F9B800A021928E060010E16D /* ImageCellDelegate.swift */,
+				F98B7F5B218BE506008252EE /* ImageCell.swift */,
 				F98B7F59218BE506008252EE /* ImageCell.xib */,
 				F98B7F5D218BE506008252EE /* PhotoDataSource.swift */,
 				F98B7F5A218BE506008252EE /* UIDrawer.swift */,
