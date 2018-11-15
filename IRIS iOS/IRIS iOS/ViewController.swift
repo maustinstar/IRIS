@@ -12,6 +12,8 @@ import Photos
 
 class ViewController: UIViewController, UIDrawerDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var imageView: UIImageView!
     
     var transferImage: UIImage?
@@ -68,6 +70,7 @@ class ViewController: UIViewController, UIDrawerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -112,5 +115,11 @@ class ViewController: UIViewController, UIDrawerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension ViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }
