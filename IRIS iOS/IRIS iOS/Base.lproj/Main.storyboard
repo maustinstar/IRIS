@@ -17,19 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="oTF-ET-FGP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="oTF-ET-FGP">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P9h-hD-y8I">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9h-hD-y8I">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="P9h-hD-y8I" firstAttribute="leading" secondItem="oTF-ET-FGP" secondAttribute="leading" id="SzO-Ac-PKw"/>
-                                    <constraint firstAttribute="bottom" secondItem="P9h-hD-y8I" secondAttribute="bottom" id="bKJ-Q5-paL"/>
-                                    <constraint firstAttribute="trailing" secondItem="P9h-hD-y8I" secondAttribute="trailing" id="rUU-yT-jyU"/>
-                                    <constraint firstItem="P9h-hD-y8I" firstAttribute="top" secondItem="oTF-ET-FGP" secondAttribute="top" id="wC9-BA-USU"/>
-                                </constraints>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6w2-b9-qTT">
                                 <rect key="frame" x="0.0" y="547" width="375" height="60"/>
@@ -104,15 +98,13 @@
                         <constraints>
                             <constraint firstItem="OMI-a6-dL7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3zf-hO-MUH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="oTF-ET-FGP" secondAttribute="leading" id="7zw-lf-2Co"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="oTF-ET-FGP" secondAttribute="top" id="GFf-2L-Nt6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P9h-hD-y8I" secondAttribute="trailing" id="J9H-jz-xMR"/>
+                            <constraint firstAttribute="top" secondItem="oTF-ET-FGP" secondAttribute="top" id="GFf-2L-Nt6"/>
+                            <constraint firstItem="P9h-hD-y8I" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="HA7-jo-zqW"/>
                             <constraint firstItem="OMI-a6-dL7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="KC9-n2-EfY"/>
-                            <constraint firstItem="P9h-hD-y8I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PiQ-ao-f35"/>
                             <constraint firstItem="oTF-ET-FGP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U98-px-f33"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P9h-hD-y8I" secondAttribute="bottom" id="bKh-ae-43K"/>
-                            <constraint firstItem="oTF-ET-FGP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fQ4-bc-FcF"/>
+                            <constraint firstItem="P9h-hD-y8I" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="egB-Hx-Hgo"/>
+                            <constraint firstItem="oTF-ET-FGP" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="fQ4-bc-FcF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6w2-b9-qTT" secondAttribute="bottom" constant="60" id="hbw-fT-gJw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="P9h-hD-y8I" secondAttribute="top" id="iF9-oC-PQb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6w2-b9-qTT" secondAttribute="trailing" id="jjn-9s-LdP"/>
                             <constraint firstItem="6w2-b9-qTT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xVl-9k-OtA"/>
                         </constraints>

@@ -71,9 +71,9 @@ class ImageCell: UICollectionViewCell {
     
     public func requestTransferImage() {
         
-        if transferImage != nil {
-            delegate?.didTransferImage(cell: self, image: transferImage)
-        } else {
+//        if transferImage != nil {
+//            delegate?.didTransferImage(cell: self, image: transferImage)
+//        } else {
             guard let sourceImage = sourceImage else {
                 fatalError("Invalid Source Image")
             }
@@ -81,7 +81,7 @@ class ImageCell: UICollectionViewCell {
             transferModel.requestTransferFrom(sourceImage, completion: { (output) in
                 self.transferImage = output
             })
-        }
+//        }
     }
     
     public func startAnimating(easeIn duration: TimeInterval = 0.4) {

@@ -38,6 +38,9 @@
 		F98B7F75218BE506008252EE /* UIDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F5E218BE506008252EE /* UIDrawerDelegate.swift */; };
 		F98B7F76218BE506008252EE /* UIDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F5E218BE506008252EE /* UIDrawerDelegate.swift */; };
 		F998E6462193ACE500033896 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998E6452193ACE500033896 /* Share.swift */; };
+		F9A06826219DD96300A47DD4 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9266BFB219291C1003B0E91 /* IRIS.framework */; };
+		F9A06827219DDB3800A47DD4 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9266BFB219291C1003B0E91 /* IRIS.framework */; };
+		F9A06828219DDB3900A47DD4 /* IRIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9266BFB219291C1003B0E91 /* IRIS.framework */; };
 		F9B76B84217B64EB004366BB /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B83217B64EB004366BB /* PhotosUI.framework */; };
 		F9B76B86217B64EB004366BB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B76B85217B64EB004366BB /* Photos.framework */; };
 		F9B76B89217B64EB004366BB /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B88217B64EB004366BB /* PhotoEditingViewController.swift */; };
@@ -139,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A06826219DD96300A47DD4 /* IRIS.framework in Frameworks */,
 				F9B76B84217B64EB004366BB /* PhotosUI.framework in Frameworks */,
 				F9B76B86217B64EB004366BB /* Photos.framework in Frameworks */,
 			);
@@ -156,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A06827219DDB3800A47DD4 /* IRIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A06828219DDB3900A47DD4 /* IRIS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +700,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NB4XDB925U;
 				INFOPLIST_FILE = "IRIS iOS/Info.plist";
@@ -713,6 +720,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NB4XDB925U;
 				INFOPLIST_FILE = "IRIS iOS/Info.plist";
