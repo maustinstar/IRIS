@@ -34,9 +34,32 @@ class ViewController: UIViewController, UIDrawerDelegate {
         }
     }
     
+    @objc func zoom(recognizer: UITapGestureRecognizer) {
+        if scrollView.zoomScale == 1 {
+            scrollView.zoom(
+                to: zoomRectForScale(
+                    scale: scrollView.maximumZoomScale,
+                    center: recognizer.location(in: recognizer.view)),
+                animated: true)
+        } else {
+            scrollView.setZoomScale(1, animated: true)
+        }
+    }
+    
+    func zoomRectForScale(scale: CGFloat, center: CGPoint) -> CGRect {
+        var rect = CGRect.zero
+        rect.size.height = imageView.frame.size.height / scale
+        rect.size.width  = imageView.frame.size.width  / scale
+        let newCenter = scrollView.convert(center, from: imageView)
+        rect.origin.x = newCenter.x - (rect.size.width / 2.0)
+        rect.origin.y = newCenter.y - (rect.size.height / 2.0)
+        return rect
+    }
+    
     @IBAction func previewOriginal(_ sender: Any) {
         isPreviewingOriginal = true
     }
+    
     @IBAction func exitPreview(_ sender: Any) {
         isPreviewingOriginal = false
     }
@@ -78,10 +101,14 @@ class ViewController: UIViewController, UIDrawerDelegate {
         super.viewDidAppear(animated)
         view.layer.backgroundColor = UIColor.white.cgColor
         
-        let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapImage))
-        imageView.addGestureRecognizer(gestureRecognizer)
-        imageView.isUserInteractionEnabled = true
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(zoom(recognizer:)))
+        doubleTap.numberOfTapsRequired = 2
         
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapImage))
+        singleTap.require(toFail: doubleTap)
+        imageView.addGestureRecognizer(doubleTap)
+        imageView.addGestureRecognizer(singleTap)
+        imageView.isUserInteractionEnabled = true
         self.addChild(drawer)
         self.view.addSubview(drawer.view)
     }
@@ -100,12 +127,12 @@ class ViewController: UIViewController, UIDrawerDelegate {
             switch isFocused {
             case true:
                 drawer.hide()
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.15) {
                     self.view.backgroundColor = .black
                 }
             case false:
                 drawer.show()
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.15) {
                     self.view.backgroundColor = .white
                 }
             }

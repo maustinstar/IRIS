@@ -89,7 +89,7 @@ class UIDrawer: UIViewController {
         show(withDuration: 0.6)
     }
     
-    func hide(withDuration duration: TimeInterval = 0.2) {
+    func hide(withDuration duration: TimeInterval = 0.15) {
         feedbackGenerator.prepare()
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.view.frame.origin.y = UIScreen.main.bounds.height
@@ -98,7 +98,7 @@ class UIDrawer: UIViewController {
         }
     }
     
-    func show(withDuration duration: TimeInterval = 0.2) {
+    func show(withDuration duration: TimeInterval = 0.15) {
         feedbackGenerator.prepare()
         UIView.animate(withDuration: duration, animations: { [weak self] in
             let yComponent = self?.partialView
