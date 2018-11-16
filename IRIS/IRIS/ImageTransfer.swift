@@ -114,7 +114,7 @@ public class ImageTransfer: PatchDelegate {
         }
         // Add image to render context
         UIGraphicsPushContext(renderContext!)
-        UIImage(cgImage: croppedImage, scale: 1.0, orientation: inputImage!.imageOrientation).draw(in: rect)
+        UIImage(cgImage: croppedImage).draw(in: rect)
 //        renderContext?.draw(croppedImage, in: rect) // renders flipped?
     }
     
@@ -161,9 +161,9 @@ public class ImageTransfer: PatchDelegate {
         isCanceled = false
         patchesRendered = 0
         self.completion = completion
-        var resized = image
+        var resized = image.reoriented()
         if model.scaleFactor == 1 {
-            resized = image.scaled()!
+            resized = resized.scaled()!
         }
         self.inputImage = resized
         

@@ -30,6 +30,15 @@ public extension UIImage {
         return result
     }
     
+    func reoriented() -> UIImage {
+        if self.imageOrientation == .up { return self }
+        UIGraphicsBeginImageContext(self.size)
+        self.draw(at: .zero)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image ?? self
+    }
+    
 //    func flipVertically() -> UIImage {
 //        var newOrient:UIImage.Orientation
 //        switch imageOrientation {
