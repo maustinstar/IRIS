@@ -72,13 +72,14 @@ class ViewController: UIViewController, UIDrawerDelegate {
         let drawer = UIDrawer()
         drawer.delegate = self
         drawer.didMove(toParent: self)
-        let height = view.frame.height
-        let width  = view.frame.width
-        drawer.view.frame = CGRect(
-            x:      0,
-            y:      self.view.frame.maxY,
-            width:  width,
-            height: height)
+        
+        let (width, height) = (view.frame.width, view.frame.height)
+        
+        drawer.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        drawer.view.bottomAnchor .constraint(equalTo: view.bottomAnchor)
+        drawer.view.heightAnchor .constraint(equalToConstant: height)
+        drawer.view.widthAnchor  .constraint(equalToConstant: min(width, height))
+        
         return drawer
     }()
     
