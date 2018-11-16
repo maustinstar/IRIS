@@ -9,13 +9,16 @@
 import UIKit
 import Photos
 import PhotosUI
+import IRIS
 
 class PhotoEditingViewController: UIViewController, PHContentEditingController {
 
     var input: PHContentEditingInput?
-    var enhancedImage: UIImage?
-    var enhanceQueue = OperationQueue()
     @IBOutlet weak var preview: UIImageView!
+    
+    lazy var transferModel: ImageTransfer = {
+        return ImageTransfer()
+    }()
     
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     override func viewDidLoad() {
@@ -35,50 +38,42 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         // Present content for editing, and keep the contentEditingInput for use when closing the edit session.
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
-        indicator.hidesWhenStopped = true
-        
-        print("startContentEditing")
         input = contentEditingInput
-        enhanceQueue.addOperation {
-            if let path = self.input!.fullSizeImageURL?.path {
-//                self.enhancedImage = UIImage(contentsOfFile: path)!.enhance()!
-            }
+        transferModel.requestTransferFrom(
+        UIImage(contentsOfFile: input!.fullSizeImageURL!.path)!) { (output) in
+            self.preview.image = output
         }
-        enhanceQueue.waitUntilAllOperationsAreFinished()
-        self.preview.image = enhancedImage
+        indicator.hidesWhenStopped = true
         self.preview.contentMode = .scaleAspectFit
     }
     
     func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {
-        // Block thread until image is enhanced
-            enhanceQueue.waitUntilAllOperationsAreFinished()
+        
         // Update UI to reflect that editing has finished and output is being rendered.
         // Render and provide output on a background queue.
-        DispatchQueue.global().async {
-            let contentEditingOutput = PHContentEditingOutput(contentEditingInput: self.input!)
+        
+        let contentEditingOutput = PHContentEditingOutput(contentEditingInput: self.input!)
+        do {
+            let archiveData = try NSKeyedArchiver.archivedData(withRootObject: "Boost Resolution", requiringSecureCoding: false)
+            let identifier = "com.iris.app-extension.boost-res"
+            let adjustmentData = PHAdjustmentData(formatIdentifier: identifier, formatVersion: "1.0", data: archiveData)
+            contentEditingOutput.adjustmentData = adjustmentData
+        } catch {
+            fatalError("Can not archive data.")
+        }
+        if let image = self.preview.image {
+            let jpegData = image.jpegData(compressionQuality: 1.0)
+            
             do {
-                let archiveData = try NSKeyedArchiver.archivedData(withRootObject: "Boost Resolution", requiringSecureCoding: false)
-                let identifier = "com.iris.app-extension.boost-res"
-                let adjustmentData = PHAdjustmentData(formatIdentifier: identifier, formatVersion: "1.0", data: archiveData)
-                contentEditingOutput.adjustmentData = adjustmentData
+                try jpegData?.write(to: contentEditingOutput.renderedContentURL, options: .atomic)
+                completionHandler(contentEditingOutput)
             } catch {
-                fatalError("Can not archive data.")
-            }
-            if let image = self.preview.image {
-                
-                let jpegData = image.jpegData(compressionQuality: 1.0)
-                
-                do {
-                    try jpegData?.write(to: contentEditingOutput.renderedContentURL, options: .atomic)
-                    completionHandler(contentEditingOutput)
-                } catch {
-                    print("Save error")
-                    completionHandler(nil)
-                }
-            } else {
-                print("Load error")
+                print("Save error")
                 completionHandler(nil)
             }
+        } else {
+            print("Load error")
+            completionHandler(nil)
         }
     }
     
