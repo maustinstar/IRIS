@@ -19,14 +19,21 @@ public class ImageTransfer: PatchDelegate {
 //        print(progress)
     }
     
-    public static let main = ImageTransfer(
-        model: IRISCNN2(),
-        minimumOverlap: 4
-    )
+    public var isCanceled = false
+    public func cancel() { isCanceled = true }
+    
+    public static let main = ImageTransfer()
     
     public var delegate: ImageTransferDelegate?
     
     internal var model: Model
+    
+    
+    //: Default ImageTransfer
+    public init() {
+        self.model = IRISCNN2()
+        ImageTransfer.Inset.minimum = 4
+    }
     
     public init(model: Model, minimumOverlap: Int = 0) {
         self.model = model
@@ -142,6 +149,7 @@ public class ImageTransfer: PatchDelegate {
         
         for x in 0..<Patches.x {
             for y in 0..<Patches.y {
+                if isCanceled { return }
                 let p = patch(from: image, at: (x: x, y: y))
                 p.delegate = self
                 p.transfer(withModel: model)
@@ -150,6 +158,7 @@ public class ImageTransfer: PatchDelegate {
     }
     
     public func requestTransferFrom(_ image: UIImage, completion: ((UIImage) -> Void)? = nil) {
+        isCanceled = false
         patchesRendered = 0
         self.completion = completion
         var resized = image

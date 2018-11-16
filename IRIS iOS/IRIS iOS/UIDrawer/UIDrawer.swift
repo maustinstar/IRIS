@@ -179,4 +179,12 @@ extension UIDrawer: UICollectionViewDelegate, ImageCellDelegate {
         cell.startAnimating()
         cell.requestTransferImage()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCell else {
+            fatalError("Expected Image Cell")
+        }
+        self.selectedImage = nil
+        cell.cancelTransfer()
+    }
 }

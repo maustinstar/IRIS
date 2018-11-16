@@ -21,7 +21,7 @@ class ImageCell: UICollectionViewCell {
     var delegate: ImageCellDelegate?
     
     private lazy var transferModel: ImageTransfer = {
-        return ImageTransfer.main
+        return ImageTransfer()
     }()
     
     var progress: CGFloat = 0.0 {
@@ -91,7 +91,12 @@ class ImageCell: UICollectionViewCell {
     public func stopAnimating() {
         self.effectView.alpha = 0.0
     }
-
+    
+    func cancelTransfer() {
+        transferModel.cancel()
+        stopAnimating()
+        transferImage = nil
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -100,6 +105,7 @@ class ImageCell: UICollectionViewCell {
 }
 
 extension ImageCell: ImageTransferDelegate {
+    
     func imageTransferDidSet(progress: CGFloat) {
         self.progress = progress
     }
