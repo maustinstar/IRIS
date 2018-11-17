@@ -93,15 +93,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-36-AzG">
+                                <rect key="frame" x="0.0" y="467" width="375" height="567"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KLf-36-AzG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="-100" id="0GC-Rk-WYo"/>
                             <constraint firstItem="OMI-a6-dL7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3zf-hO-MUH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="oTF-ET-FGP" secondAttribute="leading" id="7zw-lf-2Co"/>
+                            <constraint firstItem="KLf-36-AzG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8QD-vf-bYd"/>
+                            <constraint firstItem="KLf-36-AzG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ACp-Pu-0uI"/>
                             <constraint firstAttribute="top" secondItem="oTF-ET-FGP" secondAttribute="top" id="GFf-2L-Nt6"/>
                             <constraint firstItem="P9h-hD-y8I" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="HA7-jo-zqW"/>
                             <constraint firstItem="OMI-a6-dL7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="KC9-n2-EfY"/>
                             <constraint firstItem="oTF-ET-FGP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U98-px-f33"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KLf-36-AzG" secondAttribute="bottom" multiplier="1/2" constant="150" id="bFU-I4-Vdb"/>
                             <constraint firstItem="P9h-hD-y8I" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="egB-Hx-Hgo"/>
                             <constraint firstItem="oTF-ET-FGP" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="fQ4-bc-FcF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6w2-b9-qTT" secondAttribute="bottom" constant="60" id="hbw-fT-gJw"/>
@@ -111,6 +118,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="container" destination="KLf-36-AzG" id="gfk-lK-TIC"/>
                         <outlet property="imageView" destination="P9h-hD-y8I" id="Sby-Gf-SfQ"/>
                         <outlet property="scrollView" destination="oTF-ET-FGP" id="yqW-z2-F47"/>
                         <outlet property="tag" destination="OMI-a6-dL7" id="Pe6-pz-SOF"/>

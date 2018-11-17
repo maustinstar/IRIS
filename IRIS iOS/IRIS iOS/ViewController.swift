@@ -12,6 +12,8 @@ import Photos
 
 class ViewController: UIViewController, UIDrawerDelegate {
     
+    @IBOutlet weak var container: UIView!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -72,14 +74,7 @@ class ViewController: UIViewController, UIDrawerDelegate {
         let drawer = UIDrawer()
         drawer.delegate = self
         drawer.didMove(toParent: self)
-        
-        let (width, height) = (view.frame.width, view.frame.height)
-        
-        drawer.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        drawer.view.bottomAnchor .constraint(equalTo: view.bottomAnchor)
-        drawer.view.heightAnchor .constraint(equalToConstant: height)
-        drawer.view.widthAnchor  .constraint(equalToConstant: min(width, height))
-        
+        drawer.view.frame = container.frame
         return drawer
     }()
     

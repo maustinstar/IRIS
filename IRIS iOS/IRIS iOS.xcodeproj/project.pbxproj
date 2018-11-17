@@ -238,10 +238,10 @@
 			children = (
 				F9D09585217ACA02000D37C3 /* AppDelegate.swift */,
 				F976054D217AE7F200D8EEB1 /* Sample.HEIC */,
+				F9D09589217ACA02000D37C3 /* Main.storyboard */,
 				F9D09587217ACA02000D37C3 /* ViewController.swift */,
 				F998E6452193ACE500033896 /* Share.swift */,
 				F98B7F77218BE514008252EE /* UIDrawer */,
-				F9D09589217ACA02000D37C3 /* Main.storyboard */,
 				F9D0958C217ACA03000D37C3 /* Assets.xcassets */,
 				F9D0958E217ACA03000D37C3 /* LaunchScreen.storyboard */,
 				F9D09591217ACA03000D37C3 /* Info.plist */,
