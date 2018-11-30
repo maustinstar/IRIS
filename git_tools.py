@@ -6,9 +6,9 @@ Copyright Max Zuo 2018
 import os
 import sys
 
-def commit(message="", push=True):
+def commit(message="", auto_push=True):
 	os.system('git commit -m "' + message + '"')
-	if (push): push()
+	if (auto_push): push()
 
 def add(filename):
 	os.system('git add ' + filename)
