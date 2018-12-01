@@ -13,6 +13,8 @@ def commit(message="", auto_push=True):
 def add(filename):
 	os.system('git add ' + filename)
 
+def pull():
+	os.system('git pull')
 
 def config(username, password, repo_url):
 	os.system('git config remote.origin.url https://{}:{}@{}'.format(username, password, repo_url.split("//")[1]))
