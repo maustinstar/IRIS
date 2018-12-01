@@ -90,6 +90,9 @@ class ViewController: UIViewController, UIDrawerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+        
+        // Nearest Neighbor sampling for zoom
+        imageView.layer.magnificationFilter = CALayerContentsFilter(rawValue: kCISamplerFilterNearest)
         // Do any additional setup after loading the view.
     }
     

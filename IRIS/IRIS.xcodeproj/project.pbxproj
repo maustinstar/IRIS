@@ -9,13 +9,9 @@
 /* Begin PBXBuildFile section */
 		F9357ACF217ADB7600C210CC /* ImageTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9357ACE217ADB7600C210CC /* ImageTransfer.swift */; };
 		F94ECA03218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */; };
-		F94ECA04218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */; };
 		F94ECA07218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */; };
-		F94ECA08218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */; };
 		F94ECA0A218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */; };
-		F94ECA0B218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */; };
 		F94ECA0D218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA0C218F7AD6007EE4D4 /* StarryNight.mlmodel */; };
-		F94ECA0E218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F94ECA0C218F7AD6007EE4D4 /* StarryNight.mlmodel */; };
 		F9760540217AE03300D8EEB1 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9760539217AE03200D8EEB1 /* Math.swift */; };
 		F9760543217AE03300D8EEB1 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976053C217AE03200D8EEB1 /* UIImage+CVPixelBuffer.swift */; };
 		F9760544217AE03300D8EEB1 /* MultiArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976053D217AE03200D8EEB1 /* MultiArray.swift */; };
@@ -24,8 +20,10 @@
 		F98B7F79218BECB8008252EE /* ImageTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B7F78218BECB8008252EE /* ImageTransferDelegate.swift */; };
 		F98B7F83218BF643008252EE /* Sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F82218BF643008252EE /* Sample.jpg */; };
 		F98B7F84218BF643008252EE /* Sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F98B7F82218BF643008252EE /* Sample.jpg */; };
+		F98CB07C21B093770069DAF2 /* lessParams.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F98CB07B21B093770069DAF2 /* lessParams.mlmodel */; };
 		F98FFBEF217FD5F100F38DA9 /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98FFBEE217FD5F100F38DA9 /* CGImage.swift */; };
 		F9939604217C882F00696E98 /* IRISCNN2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9939603217C882F00696E98 /* IRISCNN2.mlmodel */; };
+		F996EDD621B21D2E00CF37AD /* DSRCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F996EDD521B21D2E00CF37AD /* DSRCNN.mlmodel */; };
 		F9B76B98217BD69A004366BB /* IRISCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */; };
 		F9B8009B219262010010E16D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B8009A219262010010E16D /* Model.swift */; };
 		F9B8009D219275E00010E16D /* PatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B8009C219275E00010E16D /* PatchDelegate.swift */; };
@@ -33,7 +31,6 @@
 		F9D09606217ACA41000D37C3 /* IRISTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D09605217ACA41000D37C3 /* IRISTests.swift */; };
 		F9D09608217ACA41000D37C3 /* IRIS.h in Headers */ = {isa = PBXBuildFile; fileRef = F9D095FA217ACA41000D37C3 /* IRIS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9D47C63218D057300671CD8 /* TestConvT-1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9D47C62218D057300671CD8 /* TestConvT-1.mlmodel */; };
-		F9D47C64218D057300671CD8 /* TestConvT-1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F9D47C62218D057300671CD8 /* TestConvT-1.mlmodel */; };
 		F9DAB0DE217F77DF00466AE9 /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB0DD217F77DF00466AE9 /* Patch.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +57,10 @@
 		F97988BE217ACF3E0027189E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F98B7F78218BECB8008252EE /* ImageTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransferDelegate.swift; sourceTree = "<group>"; };
 		F98B7F82218BF643008252EE /* Sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Sample.jpg; path = /Users/michaelverges/Desktop/HackGT/2018/IRIS/IRIS/IRIS/Sample.jpg; sourceTree = "<absolute>"; };
+		F98CB07B21B093770069DAF2 /* lessParams.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lessParams.mlmodel; sourceTree = "<group>"; };
 		F98FFBEE217FD5F100F38DA9 /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
 		F9939603217C882F00696E98 /* IRISCNN2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN2.mlmodel; sourceTree = "<group>"; };
+		F996EDD521B21D2E00CF37AD /* DSRCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = DSRCNN.mlmodel; path = ../../../../Max/DSRCNN.mlmodel; sourceTree = "<group>"; };
 		F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IRISCNN.mlmodel; sourceTree = "<group>"; };
 		F9B8009A219262010010E16D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F9B8009C219275E00010E16D /* PatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDelegate.swift; sourceTree = "<group>"; };
@@ -98,8 +97,10 @@
 			isa = PBXGroup;
 			children = (
 				F9B8009A219262010010E16D /* Model.swift */,
+				F996EDD521B21D2E00CF37AD /* DSRCNN.mlmodel */,
 				F9B76B97217BD69A004366BB /* IRISCNN.mlmodel */,
 				F9939603217C882F00696E98 /* IRISCNN2.mlmodel */,
+				F98CB07B21B093770069DAF2 /* lessParams.mlmodel */,
 				F94ECA06218F7681007EE4D4 /* lightAsFlup.mlmodel */,
 				F94ECA09218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel */,
 				F94ECA02218F6C88007EE4D4 /* lighterSRCNN16v2.mlmodel */,
@@ -281,6 +282,8 @@
 				F9760548217AE04100D8EEB1 /* MLMultiArray+Image.swift in Sources */,
 				F9B8009B219262010010E16D /* Model.swift in Sources */,
 				F94ECA0D218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */,
+				F98CB07C21B093770069DAF2 /* lessParams.mlmodel in Sources */,
+				F996EDD621B21D2E00CF37AD /* DSRCNN.mlmodel in Sources */,
 				F98B7F79218BECB8008252EE /* ImageTransferDelegate.swift in Sources */,
 				F9DAB0DE217F77DF00466AE9 /* Patch.swift in Sources */,
 				F94ECA07218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */,
@@ -294,11 +297,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9D09606217ACA41000D37C3 /* IRISTests.swift in Sources */,
-				F94ECA04218F6C89007EE4D4 /* lighterSRCNN16v2.mlmodel in Sources */,
-				F94ECA0E218F7AD6007EE4D4 /* StarryNight.mlmodel in Sources */,
-				F94ECA08218F7681007EE4D4 /* lightAsFlup.mlmodel in Sources */,
-				F9D47C64218D057300671CD8 /* TestConvT-1.mlmodel in Sources */,
-				F94ECA0B218F78DA007EE4D4 /* lightAsFlupTheSequel.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

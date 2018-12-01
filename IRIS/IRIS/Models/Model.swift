@@ -42,6 +42,16 @@ extension Model {
 //    }
 }
 
+extension DSRCNN: Model {
+    
+    var scaleFactor: Int { return 2 }
+    var inputSize: (Int, Int) { return (256, 256) }
+    
+    func predict(image: CVPixelBuffer) throws -> MLMultiArray {
+        return try self.prediction(image: image).output1
+    }
+}
+
 extension IRISCNN: Model {
     
     var scaleFactor: Int { return 1 }
@@ -103,6 +113,16 @@ extension lighterSRCNN16v2: Model {
 //}
 
 extension TestConvT_1_1: Model {
+    
+    var scaleFactor: Int { return 2 }
+    var inputSize: (Int, Int) { return (256, 256) }
+    
+    func predict(image: CVPixelBuffer) throws -> MLMultiArray {
+        return try self.prediction(image: image).output1
+    }
+}
+
+extension lessParams: Model {
     
     var scaleFactor: Int { return 2 }
     var inputSize: (Int, Int) { return (256, 256) }

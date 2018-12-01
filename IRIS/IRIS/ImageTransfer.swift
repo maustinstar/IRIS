@@ -31,7 +31,7 @@ public class ImageTransfer: PatchDelegate {
     
     //: Default ImageTransfer
     public init() {
-        self.model = IRISCNN2()
+        self.model = DSRCNN()
         ImageTransfer.Inset.minimum = 4
     }
     
