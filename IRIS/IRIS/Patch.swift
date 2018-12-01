@@ -32,7 +32,7 @@ public class Patch {
     public init(buffer: MLMultiArray, position: (Int, Int), size: (Int, Int), index: (Int, Int) = (0, 0)) {
         self.position = position
         self.size = size
-        self.buffer = (buffer.image(offset: 0, scale: 255)!
+        self.buffer = (buffer.image(offset: 0, scale: 1)!
             .pixelBuffer(width: size.0, height: size.1))!
         self.index = index
     }
